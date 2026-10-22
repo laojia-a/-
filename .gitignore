@@ -1,0 +1,7 @@
+# regenerable or large local artefacts (see README)
+.venv/
+__pycache__/
+models/
+fonts/
+build/
+ffmpeg
