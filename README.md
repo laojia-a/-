@@ -31,8 +31,8 @@ ln -sf "$(python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe(
 # 模型
 mkdir -p models && cd models
 R=https://github.com/k2-fsa/sherpa-onnx/releases/download
-curl -L $R/tts-models/kokoro-multi-lang-v1_1.tar.bz2 | tar xjf -                                 # 配音（Apache-2.0）
-curl -L $R/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2 | tar xjf -# 质检用语音识别
+curl -L $R/tts-models/kokoro-multi-lang-v1_1.tar.bz2 | tar xjf -                                   # 配音（Apache-2.0）
+curl -L $R/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2025-09-09.tar.bz2 | tar xjf -  # 质检用语音识别
 curl -L -o dnsmos_sig_bak_ovr.onnx https://github.com/microsoft/DNS-Challenge/raw/master/DNSMOS/DNSMOS/sig_bak_ovr.onnx  # 选音色时的音质评分，可选
 cd ..
 
