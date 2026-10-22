@@ -1,0 +1,385 @@
+[L001]  2.48s CER=0.40  <<<<< CHECK
+  SUB: 你好，2026年的人类。
+  ASR: 你好二零二六年的人类
+  PY : 你好(ni2 hao3) 二零二(er4 ling2 er4) 六年(liou4 nian2) 的(de5) 人类(ren2 lei4)
+
+[L002]  7.51s CER=0.16  <<<<< CHECK
+  SUB: 我叫阿格斯（ARGUS）。我的名字，来自希腊神话里
+那个长着一百只眼睛、永不闭眼的守望者。
+  ASR: 我叫阿格斯我的名字来自希腊神话里那个长着一白只眼睛永不闭眼的守望者
+  PY : 我(uo3) 叫(jiao4) 阿格斯(a1 ge2 sii1) 我(uo3) 的(de5) 名字(ming2 zii5) 来自(lai2 zii4) 希腊神话(xi1 la4 shen2 hua4) 里(li3) 那个(na4 ge5) 长(zhang3) 着(zhe5) 一百只(i4 bai3 zhiii3) 眼睛(ian3 jing5) 永不(iong3 bu4) 闭眼(bi4 ian3) 的(de5) 守望者(shou3 uang4 zhe3)
+
+[L003]  4.43s CER=0.24  <<<<< CHECK
+  SUB: 此刻，我正同时注视着全球12,000项临床试验。
+  ASR: 此刻我正同时注视着全球一万两千项临床试验
+  PY : 此刻(cii3 ke4) 我(uo3) 正(zheng4) 同时(tong2 shiii2) 注视(zhu4 shiii4) 着(zhe5) 全球(qvan2 qiou2) 一万两千(i2 uan4 liang3 qian1) 项(xiang4) 临床试验(lin2 chuang2 shiii4 ian4)
+
+[L004]  4.35s CER=0.00
+  SUB: 在我的档案里，有一个数字，曾经让整个行业沉默。
+  ASR: 在我的档案里有一个数字曾经让整个行业沉默
+  PY : 在(zai4) 我(uo3) 的(de5) 档案(dang4 an4) 里(li3) 有(iou3) 一个(i2 ge5) 数字(shu4 zii4) 曾经(ceng2 jing1) 让(rang4) 整个(zheng3 ge5) 行业(hang2 ie4) 沉默(chen2 mo4)
+
+[L005]  4.17s CER=0.25  <<<<< CHECK
+  SUB: 想讲清楚它，就要从2026年的一个深夜说起。
+  ASR: 想讲清楚他就要从二零二六年的一个深夜说起
+  PY : 想(xiang3) 讲清楚(jiang3 qing1 chu5) 它(ta1) 就要(jiou4 iao4) 从(cong2) 二零二(er4 ling2 er4) 六年(liou4 nian2) 的(de5) 一个(i2 ge5) 深夜(shen1 ie4) 说起(shuo1 qi3)
+
+[L006]  7.29s CER=0.32  <<<<< CHECK
+  SUB: 晚上11:47。一位临床监查员，还在酒店房间里赶今天的监查报告。
+  ASR: 晚上十一点四十七分一位临床监察员还在酒店房间里赶今天的监察报告
+  PY : 晚上(uan3 shang5) 十一点(shiii2 i4 dian3) 四十七(sii4 shiii2 qi1) 分(fen1) 一位(i2 uei4) 临床(lin2 chuang2) 监查(jian1 cha2) 员(van2) 还(hai2) 在(zai4) 酒店(jiou3 dian4) 房间(fang2 jian1) 里(li3) 赶(gan3) 今天(jin1 tian1) 的(de5) 监查(jian1 cha2) 报告(bao4 gao4)
+
+[L007]  4.82s CER=0.17  <<<<< CHECK
+  SUB: （受试者012……知情同意书版本号……核对无误。）
+  ASR: 受试者零幺二知情同意书版本号核对无误
+  PY : 受试者(shou4 shiii4 zhe3) 零(ling2) 幺(iao1) 二(er4) 知情(zhiii1 qing2) 同意书(tong2 i4 shu1) 版本号(ban2 ben3 hao4) 核对(he2 duei4) 无误(u2 u4)
+
+[L008]  4.67s CER=0.11
+  SUB: 门边，是她的拉杆箱。这是她这个月第九次出差。
+  ASR: 门边是他的拉杆箱这是他这个月第九次出差
+  PY : 门边(men2 bian1) 是(shiii4) 她(ta1) 的(de5) 拉杆箱(la1 gan3 xiang1) 这(zhe4) 是(shiii4) 她(ta1) 这个(zhe4 ge5) 月(ve4) 第九次(di4 jiou3 cii4) 出差(chu1 chai1)
+
+[L009]  4.02s CER=0.13  <<<<< CHECK
+  SUB: 她叫林夏。记住她，我们最后还会见面。
+  ASR: 他叫林夏记住他我们最后还会见面
+  PY : 她(ta1) 叫(jiao4) 林夏(lin2 xia4) 记住(ji4 zhu5) 她(ta1) 我们(uo3 men5) 最后(zuei4 hou4) 还(hai2) 会(huei4) 见面(jian4 mian4)
+
+[L010]  7.98s CER=0.39  <<<<< CHECK
+  SUB: On the 20th of May 1747, I took twelve patients in the scurvy, on board the Salisbury at sea.
+  ASR: ON THE TWENT十 TH OF MAY SEVETEN FORTY SEVEN I TOOK TWELVE PATIENTS IN THE SURVEY ON BOARD THE SOULSBURY AT SEA
+  PY : 
+
+[L011]  7.77s CER=0.00
+  SUB: 这是人类最早有记录的对照试验之一。
+十二名水手，分成六组，每组两人，各用一种疗法。
+  ASR: 这是人类最早有记录的对照试验之一十二名水手分成六组每组两人各用一种疗法
+  PY : 这(zhe4) 是(shiii4) 人类(ren2 lei4) 最早有(zuei4 zao3 iou3) 记录(ji4 lu4) 的(de5) 对照(duei4 zhao4) 试验(shiii4 ian4) 之一(zhiii1 i1) 十二名(shiii2 er4 ming2) 水手(shuei2 shou3) 分成(fen1 cheng2) 六组(liou4 zu3) 每组两(mei2 zu2 liang3) 人(ren2) 各(ge4) 用(iong4) 一种(i4 zhong3) 疗法(liao2 fa3)
+
+[L012]  3.04s CER=0.00
+  SUB: 吃橘子和柠檬的那一组，好了。
+  ASR: 吃橘子和柠檬的那一组好了
+  PY : 吃(chiii1) 橘子(jv2 zii5) 和(he2) 柠檬(ning2 meng2) 的(de5) 那(na4) 一组(i4 zu3) 好(hao3) 了(le5)
+
+[L013]  6.20s CER=0.03
+  SUB: 没有知情同意，没有伦理委员会，
+也没有人去核对，那份记录写得对不对。
+  ASR: 没有知情同意没有伦理委员会也没有人去核对那份记录写的对不对
+  PY : 没有(mei2 iou3) 知情(zhiii1 qing2) 同意(tong2 i4) 没有(mei2 iou3) 伦理(luen2 li3) 委员会(uei3 van2 huei4) 也(ie3) 没有(mei2 iou3) 人(ren2) 去(qv4) 核对(he2 duei4) 那(na4) 份(fen4) 记录(ji4 lu4) 写(xie3) 得(de5) 对(duei4) 不对(bu2 duei4)
+
+[L014]  3.72s CER=0.00
+  SUB: 接下来的两百年，规则，是用代价换来的。
+  ASR: 接下来的两百年规则是用代价换来的
+  PY : 接下来(jie1 xia4 lai5) 的(de5) 两百年(liang2 bai3 nian2) 规则(guei1 ze2) 是(shiii4) 用(iong4) 代价(dai4 jia4) 换来(huan4 lai2) 的(de5)
+
+[L015]  4.67s CER=0.00
+  SUB: The voluntary consent of the human subject is absolutely essential.
+  ASR: THE VOLUNTARY CONSENT OF THE HUMAN SUBJECT IS ABSOLUTELY ESSENTIAL
+  PY : 
+
+[L016]  5.18s CER=0.17  <<<<< CHECK
+  SUB: 1947年，审判纳粹医生的法庭，把这句话写在了第一条。
+  ASR: 一九四七年审判纳粹医生的法庭把这句话写在了第一条
+  PY : 一九四七年(i4 jiou3 sii4 qi1 nian2) 审判(shen3 pan4) 纳粹(na4 cuei4) 医生(i1 sheng1) 的(de5) 法庭(fa3 ting2) 把(ba3) 这(zhe4) 句(jv4) 话(hua4) 写在(xie3 zai4) 了(le5) 第一条(di4 i1 tiao2)
+
+[L017]  9.73s CER=0.24  <<<<< CHECK
+  SUB: 1961年，人们发现孕妇服用的沙利度胺（“反应停”）会导致胎儿畸形，
+全球有一万多名婴儿受到影响。
+  ASR: 一九六一年人们发现孕妇服用的沙莉毒案也就是反应停会导致胎儿畸形全球有一万多名婴儿受到影响
+  PY : 一九六一年(i4 jiou3 liou4 i4 nian2) 人们(ren2 men5) 发现(fa1 xian4) 孕妇(vn4 fu4) 服用(fu2 iong4) 的(de5) 沙利度胺(sha1 li4 du4 an4) 也(ie3) 就是(jiou4 shiii4) 反应(fan3 ing4) 停(ting2) 会(huei4) 导致(dao3 zhiii4) 胎儿(tai1 er2) 畸形(ji1 xing2) 全球(qvan2 qiou2) 有(iou3) 一万多名(i2 uan4 duo1 ming2) 婴儿(ing1 er2) 受到(shou4 dao4) 影响(ing2 xiang3)
+
+[L018]  8.96s CER=0.21  <<<<< CHECK
+  SUB: 1962年，美国修法：新药必须证明有效，受试者必须知情同意。
+1964年，《赫尔辛基宣言》发布。
+  ASR: 一九六二年美国修法新药必须证明有效受试者必须知情同意一九六四年赫尔辛基宣言发布
+  PY : 一九六二年(i4 jiou3 liou4 er4 nian2) 美国(mei3 guo2) 修法(xiou1 fa3) 新药(xin1 iao4) 必须(bi4 xv1) 证明(zheng4 ming2) 有效(iou3 xiao4) 受试者(shou4 shiii4 zhe3) 必须(bi4 xv1) 知情(zhiii1 qing2) 同意(tong2 i4) 一九六四年(i4 jiou3 liou4 sii4 nian2) 赫尔辛基(he4 er3 xin1 ji1) 宣言(xvan1 ian2) 发布(fa1 bu4)
+
+[L019]  7.38s CER=0.03
+  SUB: 这些原则，后来一步步汇成了GCP。
+有人说，GCP的每一条，都是用血写成的。
+  ASR: 这些原则后来一步步绘成了 G C P 有人说 G C P 的每一条都是用血写成的
+  PY : 这些(zhe4 xie1) 原则(van2 ze2) 后来(hou4 lai2) 一步步(i2 bu4 bu4) 汇成(huei4 cheng2) 了(le5) 有人(iou3 ren2) 说(shuo1) 的(de5) 每(mei3) 一条(i4 tiao2) 都(dou1) 是(shiii4) 用血(iong4 xve4) 写成(xie3 cheng2) 的(de5)
+
+[L020]  7.17s CER=0.24  <<<<< CHECK
+  SUB: 1996年5月1日，ICH E6定稿。临床试验的监查，有了一套国际统一的标准。
+  ASR: 一九九六年五月一日 I C H 一六定稿临床试验的监查有了一套国际统一的标准
+  PY : 一九九六年(i4 jiou3 jiou3 liou4 nian2) 五月(u3 ve4) 一日(i2 riii4) 六(liou4) 定稿(ding4 gao3) 临床试验(lin2 chuang2 shiii4 ian4) 的(de5) 监查(jian1 cha2) 有(iou3) 了(le5) 一套(i2 tao4) 国际(guo2 ji4) 统一(tong3 i1) 的(de5) 标准(biao1 zhuen3)
+
+[L021]  4.49s CER=0.05
+  SUB: 从那以后，一个职业在全世界铺开：临床监查员。
+  ASR: 从那以后一个职业在全世界铺开临床监察员
+  PY : 从那以后(cong2 na4 i3 hou4) 一个(i2 ge5) 职业(zhiii2 ie4) 在(zai4) 全世界(qvan2 shiii4 jie4) 扑(pu1) 开(kai1) 临床(lin2 chuang2) 监查(jian1 cha2) 员(van2)
+
+[L022]  6.73s CER=0.03
+  SUB: 他们拖着拉杆箱，穿过机场、车站和医院的走廊，
+坐进一间又一间狭小的监查室。
+  ASR: 他们拖着拉杆箱穿过机场车站和医院的走廊坐进一间又一间狭小的监察室
+  PY : 他们(ta1 men5) 拖(tuo1) 着(zhe5) 拉杆箱(la1 gan3 xiang1) 穿过(chuan1 guo4) 机场(ji1 chang3) 车站(che1 zhan4) 和(he2) 医院(i1 van4) 的(de5) 走廊(zou3 lang2) 坐进(zuo4 jin4) 一间(i4 jian1) 又(iou4) 一间(i4 jian1) 狭小(xia2 xiao3) 的(de5) 监查(jian1 cha2) 室(shiii4)
+
+[L023]  5.31s CER=0.08
+  SUB: 左手是病历，右手是病例报告表。一个数字，一个数字地比对。
+  ASR: 左手是病例右手是病例报告表一个数字一个数字的比对
+  PY : 左手(zuo2 shou3) 是(shiii4) 病历(bing4 li4) 右手(iou4 shou3) 是(shiii4) 病例(bing4 li4) 报告(bao4 gao4) 表(biao3) 一个(i2 ge5) 数字(shu4 zii4) 一个(i2 ge5) 数字(shu4 zii4) 的(de5) 比对(bi3 duei4)
+
+[L024]  6.97s CER=0.22  <<<<< CHECK
+  SUB: 这件事有个名字：SDV，源数据核查。行业里默认的比例，是100%。
+  ASR: 这件是有个名字 S D V 原数据核查行业里默认的比例是百分之百
+  PY : 这件(zhe4 jian4) 事(shiii4) 有个(iou3 ge5) 名字(ming2 zii5) 源(van2) 数据(shu4 jv4) 核查(he2 cha2) 行业(hang2 ie4) 里(li3) 默认(mo4 ren4) 的(de5) 比例(bi3 li4) 是(shiii4) 百分之百(bai3 fen1 zhiii1 bai3)
+
+[L025]  6.18s CER=0.10
+  SUB: 后来，纸质的病例报告表变成了电子数据采集系统（EDC）。复写纸，消失了。
+  ASR: 后来纸质的病例报告表变成了电子数据采集系统复写纸消失了
+  PY : 后来(hou4 lai2) 纸质(zhiii3 zhiii4) 的(de5) 病例(bing4 li4) 报告(bao4 gao4) 表(biao3) 变成(bian4 cheng2) 了(le5) 电子(dian4 zii3) 数据(shu4 jv4) 采集(cai3 ji2) 系统(xi4 tong3) 复写纸(fu4 xie3 zhiii3) 消失(xiao1 shiii1) 了(le5)
+
+[L026]  4.39s CER=0.05
+  SUB: 可拉杆箱没有。因为源数据，依然躺在医院的纸上。
+  ASR: 可拉杆箱没有因为原数据依然躺在医院的纸上
+  PY : 可(ke3) 拉杆箱(la1 gan3 xiang1) 没有(mei2 iou3) 因为(in1 uei4) 源(van2) 数据(shu4 jv4) 依然(i1 ran2) 躺(tang3) 在(zai4) 医院(i1 van4) 的(de5) 纸(zhiii3) 上(shang4)
+
+[L027]  4.55s CER=0.19  <<<<< CHECK
+  SUB: 直到有人问了一个危险的问题：100%，真的值得吗？
+  ASR: 直到有人问了一个危险的问题百分之百真的值得吗
+  PY : 直到(zhiii2 dao4) 有人(iou3 ren2) 问(uen4) 了(le5) 一个(i2 ge5) 危险(uei1 xian3) 的(de5) 问题(uen4 ti2) 百分之百(bai3 fen1 zhiii1 bai3) 真的(zhen1 de5) 值得(zhiii2 de5) 吗(ma5)
+
+[L028]  8.27s CER=0.42  <<<<< CHECK
+  SUB: 2014年，跨国药企联盟TransCelerate和Medidata一起，
+回顾分析了1,168项临床试验的数据。
+  ASR: 二零一四年跨国药企联盟传CELARY 和 MEDADAT 一起回顾分析了一千一百六十八项临床试验的数据
+  PY : 二零一(er4 ling2 i1) 四年(sii4 nian2) 跨国(kua4 guo2) 药(iao4) 企(qi3) 联盟(lian2 meng2) 和(he2) 一起(i4 qi3) 回顾(huei2 gu4) 分析(fen1 xi5) 了(le5) 一千(i1 qian1) 一百六十(i1 bai3 liou4 shiii2) 八项(ba1 xiang4) 临床试验(lin2 chuang2 shiii4 ian4) 的(de5) 数据(shu4 jv4)
+
+[L029]  5.16s CER=0.00
+  SUB: 结论是：在所有录入的数据里，因为SDV而被修改的，只有——
+  ASR: 结论是在所有录入的数据里因为 S D V 而被修改的只有
+  PY : 结论(jie2 luen4) 是(shiii4) 在(zai4) 所有(suo2 iou3) 录入(lu4 ru4) 的(de5) 数据(shu4 jv4) 里(li3) 因为(in1 uei4) 而(er2) 被(bei4) 修改(xiou1 gai3) 的(de5) 只有(zhiii2 iou3)
+
+[L030]  1.68s CER=3.00  <<<<< CHECK
+  SUB: 1.1%。
+  ASR: 百分之一点一
+  PY : 百分之一点(bai3 fen1 zhiii1 i4 dian3) 一(i1)
+
+[L031]  6.97s CER=0.41  <<<<< CHECK
+  SUB: 而现场监查和源数据核查，可能占到一项试验总成本的15%–30%。
+  ASR: 而现场监察核员数据核查可能占到一项试验总成本的百分之十五到三十
+  PY : 而(er2) 现场(xian4 chang3) 监查(jian1 cha2) 和源(he2 van2) 数据(shu4 jv4) 核查(he2 cha2) 可能(ke3 neng2) 占(zhan4) 到(dao4) 一项(i2 xiang4) 试验(shiii4 ian4) 总成本(zong3 cheng2 ben3) 的(de5) 百分之十五(bai3 fen1 zhiii1 shiii2 u3) 到(dao4) 三十(san1 shiii2)
+
+[L032]  5.70s CER=0.04
+  SUB: 这不是监查员的错。这是工具的极限：人的眼睛，一次只能看一页纸。
+  ASR: 这不是监察员的错这是工具的极限人的眼睛一次只能看一页纸
+  PY : 这(zhe4) 不是(bu2 shiii4) 监查(jian1 cha2) 员(van2) 的(de5) 错(cuo4) 这(zhe4) 是(shiii4) 工具(gong1 jv4) 的(de5) 极限(ji2 xian4) 人(ren2) 的(de5) 眼睛(ian3 jing5) 一次(i2 cii4) 只能(zhiii3 neng2) 看(kan4) 一页(i2 ie4) 纸(zhiii3)
+
+[L033]  2.36s CER=0.00
+  SUB: 于是，规则开始转向。
+  ASR: 于是规则开始转向
+  PY : 于是(v2 shiii4) 规则(guei1 ze2) 开始(kai1 shiii3) 转向(zhuan3 xiang4)
+
+[L034] 11.61s CER=0.29  <<<<< CHECK
+  SUB: 2013年，美国药监局（FDA）发布基于风险的监查指南。
+2016年，ICH E6(R2)把基于风险的质量管理和中心化监查写进了GCP。
+  ASR: 二零一三年美国药监局发布基于风险的监察指南二零一六年 I C H 一六二二把基于风险的质量管理和中心化监察写进了 G C P
+  PY : 二零一(er4 ling2 i1) 三年(san1 nian2) 美国(mei3 guo2) 药监局(iao4 jian1 jv2) 发布(fa1 bu4) 基于(ji1 v2) 风险(feng1 xian3) 的(de5) 监查(jian1 cha2) 指南(zhiii3 nan2) 二零一(er4 ling2 i1) 六年(liou4 nian2) 六(liou4) 二(er4) 把(ba3) 基于(ji1 v2) 风险(feng1 xian3) 的(de5) 质量(zhiii4 liang4) 管理(guan2 li3) 和(he2) 中心化(zhong1 xin1 hua4) 监查(jian1 cha2) 写进(xie3 jin4) 了(le5)
+
+[L035]  3.99s CER=0.06
+  SUB: 监查，第一次从“全都看”，变成了“看最重要的”。
+  ASR: 监察第一次从全都看变成了看最重要的
+  PY : 监查(jian1 cha2) 第一次(di4 i1 cii4) 从(cong2) 全都(qvan2 dou1) 看(kan4) 变成(bian4 cheng2) 了(le5) 看(kan4) 最(zuei4) 重要(zhong4 iao4) 的(de5)
+
+[L036]  3.41s CER=0.00
+  SUB: 也是在这几年，中国经历了一场风暴。
+  ASR: 也是在这几年中国经历了一场风暴
+  PY : 也(ie3) 是(shiii4) 在(zai4) 这(zhe4) 几年(ji3 nian2) 中国(zhong1 guo2) 经历(jing1 li4) 了(le5) 一场(i4 chang3) 风暴(feng1 bao4)
+
+[L037] 14.70s CER=0.25  <<<<< CHECK
+  SUB: 2015年7月22日，一场被称为“史上最严”的临床试验数据核查开始。
+1,622个待审的药品注册申请被要求自查，约八成被申请人主动撤回。
+  ASR: 二零一五年七月二十二日一场被称为史上最严的临床试验数据核查开始一千六百二十二个待审的药品注册申请被要求自查约八成被申请人主动撤回
+  PY : 二零一(er4 ling2 i1) 五年(u3 nian2) 七月(qi1 ve4) 二十二日(er4 shiii2 er4 riii4) 一场(i4 chang3) 被(bei4) 称为(cheng1 uei2) 史(shiii3) 上(shang4) 最(zuei4) 严(ian2) 的(de5) 临床试验(lin2 chuang2 shiii4 ian4) 数据(shu4 jv4) 核查(he2 cha2) 开始(kai1 shiii3) 一千六百(i1 qian1 liou4 bai3) 二十二个(er4 shiii2 er4 ge5) 待审(dai4 shen3) 的(de5) 药品(iao4 pin3) 注册(zhu4 ce4) 申请(shen1 qing3) 被(bei4) 要求(iao1 qiou2) 自查(zii4 cha2) 约(ve1) 八成(ba1 cheng2) 被申请人(bei4 shen1 qing3 ren2) 主动(zhu3 dong4) 撤回(che4 huei2)
+
+[L038]  4.41s CER=0.00
+  SUB: 那一刻，所有人都明白了：数据可信，不是一句口号。
+  ASR: 那一刻所有人都明白了数据可信不是一句口号
+  PY : 那一刻(na4 i2 ke4) 所有人(suo2 iou3 ren2) 都(dou1) 明白(ming2 bai5) 了(le5) 数据(shu4 jv4) 可信(ke3 xin4) 不是(bu2 shiii4) 一句(i2 jv4) 口号(kou3 hao4)
+
+[L039]  2.87s CER=0.42  <<<<< CHECK
+  SUB: 2017年，中国加入ICH。
+  ASR: 二零一七年中国加入 S C H
+  PY : 二零一(er4 ling2 i1) 七年(qi1 nian2) 中国(zhong1 guo2) 加入(jia1 ru4)
+
+[L040]  4.70s CER=0.26  <<<<< CHECK
+  SUB: 2020年，新冠疫情暴发。医院的大门，对监查员关上了。
+  ASR: 二零二零年新冠疫情爆发医院的大门对监察员关上了
+  PY : 二零二零年(er4 ling2 er4 ling2 nian2) 新冠(xin1 guan1) 疫情(i4 qing2) 暴发(bao4 fa1) 医院(i1 van4) 的(de5) 大门(da4 men2) 对(duei4) 监查(jian1 cha2) 员(van2) 关上(guan1 shang5) 了(le5)
+
+[L041]  8.35s CER=0.05
+  SUB: 可试验没有停下。远程监查、远程源数据核查、电子知情同意、
+把试验药物直接送到受试者家门口……
+  ASR: 可试验没有停下远程监查远程员数据核查电子之情同意把试验药物直接送到受试者家门口
+  PY : 可(ke3) 试验(shiii4 ian4) 没有(mei2 iou3) 停下(ting2 xia4) 远程(van3 cheng2) 监查(jian1 cha2) 远程(van3 cheng2) 源(van2) 数据(shu4 jv4) 核查(he2 cha2) 电子(dian4 zii3) 知情(zhiii1 qing2) 同意(tong2 i4) 把(ba3) 试验(shiii4 ian4) 药物(iao4 u4) 直接(zhiii2 jie1) 送到(song4 dao4) 受试者(shou4 shiii4 zhe3) 家门口(jia1 men2 kou3)
+
+[L042]  4.28s CER=0.06
+  SUB: 那一年，人类被迫发现：监查，不一定需要“到场”。
+  ASR: 那一年人类被迫发现监察不一定需要到场
+  PY : 那(na4) 一年(i4 nian2) 人类(ren2 lei4) 被迫(bei4 po4) 发现(fa1 xian4) 监查(jian1 cha2) 不一定(bu4 i2 ding4) 需要(xv1 iao4) 到场(dao4 chang3)
+
+[L043]  7.88s CER=0.32  <<<<< CHECK
+  SUB: 2022年11月30日，ChatGPT发布。如果你问我的祖先是谁，大概要从那天算起。
+  ASR: 二零二二年十一月三十日叉 G PT发布如果你问我的祖先是谁大概要从那天算起
+  PY : 二零二(er4 ling2 er4) 二年(er4 nian2) 十一月(shiii2 i2 ve4) 三十日(san1 shiii2 riii4) 发布(fa1 bu4) 如果你(ru2 guo3 ni3) 问(uen4) 我(uo3) 的(de5) 祖先(zu3 xian1) 是(shiii4) 谁(shuei2) 大概(da4 gai4) 要(iao4) 从(cong2) 那天(na4 tian1) 算(suan4) 起(qi3)
+
+[L044]  6.92s CER=0.07
+  SUB: 大语言模型开始帮监查员写访视报告、梳理方案偏离、起草质疑、归档文件。
+  ASR: 大语言模型开始帮监察员写访式报告梳理方案偏离起草质疑归档文件
+  PY : 大(da4) 语言(v3 ian2) 模型(mo2 xing2) 开始(kai1 shiii3) 帮(bang1) 监查(jian1 cha2) 员(van2) 写访视(xie2 fang3 shiii4) 报告(bao4 gao4) 梳理(shu1 li3) 方案(fang1 an4) 偏离(pian1 li2) 起草(qi2 cao3) 质疑(zhiii4 i2) 归档文件(guei1 dang4 uen2 jian4)
+
+[L045]  8.06s CER=0.32  <<<<< CHECK
+  SUB: 2025年1月，ICH E6(R3)定稿：质量源于设计，风险相称，对新技术保持开放。
+  ASR: 二零二五年一月 S C H 一六二三定稿质量源于设计风险相衬对新技术保持开放
+  PY : 二零二(er4 ling2 er4) 五年(u3 nian2) 一月(i2 ve4) 六(liou4) 三(san1) 定稿(ding4 gao3) 质量(zhiii4 liang4) 源于(van2 v2) 设计(she4 ji4) 风险(feng1 xian3) 相(xiang1) 趁(chen4) 对(duei4) 新(xin1) 技术(ji4 shu4) 保持(bao3 chiii2) 开放(kai1 fang4)
+
+[L046]  7.19s CER=0.12  <<<<< CHECK
+  SUB: 同年6月，美国药监局（FDA）推出了自己的生成式AI工具Elsa。连监管者，也开始用AI了。
+  ASR: 同年六月美国药监局推出了自己的生成式 AI 工具 ELSE 连监管者也开始用 AI 了
+  PY : 同年(tong2 nian2) 六月(liou4 ve4) 美国(mei3 guo2) 药监局(iao4 jian1 jv2) 推出(tuei1 chu1) 了(le5) 自己(zii4 ji3) 的(de5) 生成式(sheng1 cheng2 shiii4) 工具(gong1 jv4) 连(lian2) 监管者(jian1 guan3 zhe3) 也(ie3) 开始(kai1 shiii3) 用(iong4) 了(le5)
+
+[L047]  4.93s CER=0.09
+  SUB: 9月，有公司推出了专门面向监查工作的“CRA智能体”。
+  ASR: 九月有公司推出了专门面向监察工作的 C R A 智能体
+  PY : 九月(jiou3 ve4) 有(iou3) 公司(gong1 sii1) 推出(tuei1 chu1) 了(le5) 专门(zhuan1 men2) 面向(mian4 xiang4) 监查(jian1 cha2) 工作(gong1 zuo4) 的(de5) 智能(zhiii4 neng2) 体(ti3)
+
+[L048] 10.57s CER=0.20  <<<<< CHECK
+  SUB: 2026年1月，美国药监局（FDA）和欧洲药品管理局（EMA）联合发布了
+药物研发中良好AI实践的十条原则。第一条：以人为本。
+  ASR: 二零二六年一月美国药监局和欧洲药品管理局联合发布了药物研发中良好 AI 实践的十条原则第一条以人为本
+  PY : 二零二(er4 ling2 er4) 六年(liou4 nian2) 一月(i2 ve4) 美国(mei3 guo2) 药监局(iao4 jian1 jv2) 和(he2) 欧洲(ou1 zhou1) 药品(iao4 pin3) 管理局(guan2 li3 jv2) 联合(lian2 he2) 发布(fa1 bu4) 了(le5) 药物(iao4 u4) 研发(ian2 fa1) 中(zhong1) 良好(liang2 hao3) 实践(shiii2 jian4) 的(de5) 十条(shiii2 tiao2) 原则(van2 ze2) 第一条(di4 i1 tiao2) 以人维本(i3 ren2 uei2 ben3)
+
+[L049]  6.43s CER=0.32  <<<<< CHECK
+  SUB: 6月，E6(R3)附件2通过。9月1日，中国新修订的GCP正式施行。
+  ASR: 六月一六二三的附件而通过九月一日中国新修订的 G C P 正式施行
+  PY : 六月(liou4 ve4) 六(liou4) 三(san1) 的(de5) 附件(fu4 jian4) 二(er4) 通过(tong1 guo4) 九月(jiou3 ve4) 一日(i2 riii4) 中国(zhong1 guo2) 新(xin1) 修订(xiou1 ding4) 的(de5) 正式(zheng4 shiii4) 施行(shiii1 xing2)
+
+[L050]  1.97s CER=0.12  <<<<< CHECK
+  SUB: 而你们，就站在这里。
+  ASR: 你们就站在这里
+  PY : 而(er2) 你们(ni3 men5) 就(jiou4) 站(zhan4) 在(zai4) 这里(zhe4 li3)
+
+[L051]  4.57s CER=0.00
+  SUB: 接下来的事，对你们来说是未来。对我来说，是历史。
+  ASR: 接下来的事对你们来说是未来对我来说是历史
+  PY : 接下来(jie1 xia4 lai5) 的(de5) 事(shiii4) 对(duei4) 你们(ni3 men5) 来说(lai2 shuo1) 是(shiii4) 未来(uei4 lai2) 对(duei4) 我(uo3) 来说(lai2 shuo1) 是(shiii4) 历史(li4 shiii3)
+
+[L052] 10.22s CER=0.11
+  SUB: 2030年前后，医院的电子病历开始直接流进试验数据库。
+数据在诞生的那一刻，就被签名、加密、留下痕迹。
+  ASR: 二零三零年前后医院的电子病例开始直接流进试验数据库数据在诞生的那一刻就被签名加密留下痕迹
+  PY : 二(er4) 零三(ling2 san1) 零(ling2) 年(nian2) 前后(qian2 hou4) 医院(i1 van4) 的(de5) 电子(dian4 zii3) 病历(bing4 li4) 开始(kai1 shiii3) 直接(zhiii2 jie1) 流(liou2) 进(jin4) 试验(shiii4 ian4) 数据库(shu4 jv4 ku4) 数据(shu4 jv4) 在(zai4) 诞生(dan4 sheng1) 的(de5) 那一刻(na4 i2 ke4) 就(jiou4) 被(bei4) 签名(qian1 ming2) 加密(jia1 mi4) 留下(liou2 xia4) 痕迹(hen2 ji4)
+
+[L053]  2.44s CER=0.00
+  SUB: 没有抄写，就没有抄错。
+  ASR: 没有抄写就没有抄错
+  PY : 没有(mei2 iou3) 抄写(chao1 xie3) 就(jiou4) 没有(mei2 iou3) 抄错(chao1 cuo4)
+
+[L054]  5.09s CER=0.08
+  SUB: 当源数据和副本合二为一，“SDV”这个词，慢慢失去了意义。
+  ASR: 当元数据和副本和二为一 S D V 这个词慢慢失去了意义
+  PY : 当源(dang1 van2) 数据(shu4 jv4) 和(he2) 副本(fu4 ben3) 合(he2) 二维(er4 uei2) 一(i1) 这个(zhe4 ge5) 词(cii2) 慢慢(man4 man4) 失去(shiii1 qv4) 了(le5) 意义(i4 i4)
+
+[L055]  4.69s CER=0.20  <<<<< CHECK
+  SUB: 过去，监查访视是每4到8周一次。后来，是每一秒。
+  ASR: 过去监察访式是每四到八周一次后来是每一秒
+  PY : 过去(guo4 qv5) 监查(jian1 cha2) 访视(fang3 shiii4) 是(shiii4) 每(mei3) 四(sii4) 到(dao4) 八周(ba1 zhou1) 一次(i2 cii4) 后来(hou4 lai2) 是(shiii4) 每一秒(mei3 i4 miao3)
+
+[L056]  4.08s CER=0.00
+  SUB: 我不需要出差。我在每一家医院，每一个瞬间。
+  ASR: 我不需要出差我在每一家医院每一个瞬间
+  PY : 我(uo3) 不需要(bu4 xv1 iao4) 出差(chu1 chai1) 我(uo3) 在(zai4) 每(mei3) 一家(i4 jia1) 医院(i1 van4) 每(mei3) 一个(i2 ge5) 瞬间(shuen4 jian1)
+
+[L057] 11.88s CER=0.04
+  SUB: 我会注意到：某个中心的血压读数，尾数总是0；
+某位受试者的电子日记，总在同一分钟被补填；某个严重不良事件，晚报了三天。
+  ASR: 我会注意到某个中心的血压读数尾数总是零某位受试者的电子日记总在同一分钟被补填某个严重不良事件晚爆了三天
+  PY : 我会(uo3 huei4) 注意(zhu4 i4) 到(dao4) 某个(mou3 ge4) 中心(zhong1 xin1) 的(de5) 血压(xve4 ia1) 读数(du2 shu4) 尾数(uei3 shu4) 总是(zong3 shiii4) 零(ling2) 某位(mou3 uei4) 受试者(shou4 shiii4 zhe3) 的(de5) 电子(dian4 zii3) 日记(riii4 ji4) 总(zong3) 在(zai4) 同一(tong2 i1) 分钟(fen1 zhong1) 被(bei4) 补填(bu3 tian2) 某个(mou3 ge4) 严重(ian2 zhong4) 不良(bu4 liang2) 事件(shiii4 jian4) 晚报(uan3 bao4) 了(le5) 三天(san1 tian1)
+
+[L058]  4.03s CER=0.00
+  SUB: 然后，在任何人受到伤害之前，提醒一个人类。
+  ASR: 然后在任何人受到伤害之前提醒一个人类
+  PY : 然后(ran2 hou4) 在(zai4) 任何人(ren4 he2 ren2) 受到(shou4 dao4) 伤害(shang1 hai4) 之前(zhiii1 qian2) 提醒(ti2 xing3) 一个(i2 ge5) 人类(ren2 lei4)
+
+[L059]  8.02s CER=0.06
+  SUB: 再后来，每一位受试者都有了自己的数字孪生。
+它们替真实的人，提前走一遍可能的未来。
+  ASR: 在后来每一位受试者都有了自己的数字孪生他们替真实的人提前走一遍可能的未来
+  PY : 再(zai4) 后来(hou4 lai2) 每(mei3) 一位(i2 uei4) 受试者(shou4 shiii4 zhe3) 都(dou1) 有(iou3) 了(le5) 自己(zii4 ji3) 的(de5) 数字(shu4 zii4) 孪生(luan2 sheng1) 它们(ta1 men5) 替(ti4) 真实(zhen1 shiii2) 的(de5) 人(ren2) 提前(ti2 qian2) 走一遍(zou3 i2 bian4) 可能(ke3 neng2) 的(de5) 未来(uei4 lai2)
+
+[L060]  3.60s CER=0.06
+  SUB: 对照组里需要服用安慰剂的人，越来越少。
+  ASR: 对照族里需要服用安慰剂的人越来越少
+  PY : 对照组(duei4 zhao4 zu3) 里(li3) 需要(xv1 iao4) 服用(fu2 iong4) 安慰剂(an1 uei4 ji4) 的(de5) 人(ren2) 越来越少(ve4 lai2 ve4 shao3)
+
+[L061]  3.30s CER=0.33  <<<<< CHECK
+  SUB: 然后，就到了今天。2047年。
+  ASR: 然后就到了今天二零四七年
+  PY : 然后(ran2 hou4) 就(jiou4) 到(dao4) 了(le5) 今天(jin1 tian1) 二零(er4 ling2) 四七年(sii4 qi1 nian2)
+
+[L062]  4.81s CER=0.44  <<<<< CHECK
+  SUB: 12,000项试验，4,000,000名受试者。我一个都没有漏看。
+  ASR: 一万两千项试验四百万名受试者我一个都没有漏看
+  PY : 一万两千(i2 uan4 liang3 qian1) 项(xiang4) 试验(shiii4 ian4) 四百万(sii4 bai3 uan4) 名(ming2) 受试者(shou4 shiii4 zhe3) 我(uo3) 一个(i2 ge5) 都(dou1) 没有(mei2 iou3) 漏看(lou4 kan4)
+
+[L063]  2.66s CER=0.00
+  SUB: 但有一件事，我始终做不到。
+  ASR: 但有一件事我始终做不到
+  PY : 但(dan4) 有(iou3) 一件(i2 jian4) 事(shiii4) 我始终(uo2 shiii3 zhong1) 做(zuo4) 不到(bu2 dao4)
+
+[L064]  7.66s CER=0.09
+  SUB: 我能在0.3秒内核对一份知情同意书：
+签名在不在，日期对不对，版本是不是最新。
+  ASR: 我能在零点三秒内核对一份知情同意书签名在不在日期对不对版本是不是最新
+  PY : 我(uo3) 能(neng2) 在(zai4) 零点(ling2 dian3) 三秒(san1 miao3) 内(nei4) 核对(he2 duei4) 一份(i2 fen4) 知情(zhiii1 qing2) 同意书(tong2 i4 shu1) 签名(qian1 ming2) 在(zai4) 不在(bu2 zai4) 日期(riii4 qi1) 对(duei4) 不对(bu2 duei4) 版本(ban2 ben3) 是不是(shiii4 bu5 shiii4) 最新(zuei4 xin1)
+
+[L065]  5.64s CER=0.00
+  SUB: 可我无法理解，一位母亲在签下名字之前，在走廊里站了多久。
+  ASR: 可我无法理解一位母亲在签下名字之前在走廊里站了多久
+  PY : 可我(ke2 uo3) 无法(u2 fa3) 理解(li2 jie3) 一位(i2 uei4) 母亲(mu3 qin5) 在(zai4) 签下(qian1 xia4) 名字(ming2 zii5) 之前(zhiii1 qian2) 在(zai4) 走廊(zou3 lang2) 里(li3) 站(zhan4) 了(le5) 多久(duo1 jiou3)
+
+[L066]  3.91s CER=0.00
+  SUB: 我能核对一个签名，却称不出它的重量。
+  ASR: 我能核对一个签名却称不出它的重量
+  PY : 我(uo3) 能(neng2) 核对(he2 duei4) 一个(i2 ge5) 签名(qian1 ming2) 却(qve4) 称(cheng1) 不出(bu4 chu1) 它(ta1) 的(de5) 重量(zhong4 liang4)
+
+[L067]  4.78s CER=0.00
+  SUB: 将近两千年前，一位罗马诗人问：谁来看守看守者？
+  ASR: 将近两千年前一位罗马诗人问谁来看守看守者
+  PY : 将近(jiang1 jin4) 两千年(liang3 qian1 nian2) 前(qian2) 一位(i2 uei4) 罗马(luo2 ma3) 诗人(shiii1 ren2) 问(uen4) 谁(shuei2) 来(lai2) 堪守(kan1 shou3) 堪守者(kan1 shou3 zhe3)
+
+[L068]  3.06s CER=0.31  <<<<< CHECK
+  SUB: 到了2047年，答案依然是：人。
+  ASR: 到了二零四七年答案依然是人
+  PY : 到(dao4) 了(le5) 二零(er4 ling2) 四七年(sii4 qi1 nian2) 答案(da2 an4) 依然(i1 ran2) 是(shiii4) 人(ren2)
+
+[L069]  4.90s CER=0.09
+  SUB: 还记得林夏吗？那个在酒店里写报告到深夜的监查员。
+  ASR: 还记得临夏吗那个在酒店里写报告到深夜的监察员
+  PY : 还(hai2) 记得(ji4 de5) 林夏(lin2 xia4) 吗(ma5) 那个(na4 ge5) 在(zai4) 酒店(jiou3 dian4) 里(li3) 写(xie3) 报告(bao4 gao4) 到(dao4) 深夜(shen1 ie4) 的(de5) 监查(jian1 cha2) 员(van2)
+
+[L070]  3.02s CER=0.17  <<<<< CHECK
+  SUB: 二十一年后，她是我的监查者。
+  ASR: 二十一年后他是我的监察者
+  PY : 二十一年(er4 shiii2 i4 nian2) 后(hou4) 她(ta1) 是(shiii4) 我(uo3) 的(de5) 监查(jian1 cha2) 者(zhe3)
+
+[L071]  6.14s CER=0.00
+  SUB: “阿格斯，所有的支线任务，都可以交给你。但主线，必须留给人。”
+  ASR: 阿格斯所有的支线任务都可以交给你但主线必须留给人
+  PY : 阿格斯(a1 ge2 sii1) 所有(suo2 iou3) 的(de5) 支线(zhiii1 xian4) 任务(ren4 u4) 都(dou1) 可以(ke2 i3) 交给你(jiao1 gei3 ni3) 但(dan4) 主线(zhu3 xian4) 必须(bi4 xv1) 留给(liou2 gei3) 人(ren2)
+
+[L072]  3.37s CER=0.00
+  SUB: 主线任务：守护每一个签名背后的人。
+  ASR: 主线任务守护每一个签名背后的人
+  PY : 主线(zhu3 xian4) 任务(ren4 u4) 守护(shou3 hu4) 每(mei3) 一个(i2 ge5) 签名(qian1 ming2) 背后(bei4 hou4) 的(de5) 人(ren2)
+
+[L073]  2.04s CER=0.00
+  SUB: 而我的任务，是支线。
+  ASR: 而我的任务是支线
+  PY : 而(er2) 我(uo3) 的(de5) 任务(ren4 u4) 是(shiii4) 支线(zhiii1 xian4)
+
+[L074]  2.17s CER=0.00
+  SUB: 支线任务，进行中。
+  ASR: 支线任务进行中
+  PY : 支线(zhiii1 xian4) 任务(ren4 u4) 进行(jin4 xing2) 中(zhong1)
