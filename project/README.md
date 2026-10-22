@@ -55,3 +55,16 @@ json.dump(m, open('build/tts/meta.json', 'w', encoding='utf-8'), ensure_ascii=Fa
 - 渲染依赖 `@sparticuz/chromium`（为 Linux/AWS Lambda 打包的 Chromium）。在 Windows / macOS 上要把 `render.js` 里的 `executablePath` 换成本机 Chrome 路径，并去掉 `chromium.args`。
 - 改单个场景只需重渲染对应帧区间（渲染器会跳过已存在的帧，删掉那段帧即可）。
 - 预览单帧：`node render/render.js preview <输出目录> s08_onepointone:25`。
+
+## 用 ElevenLabs 重新配音（在你自己的电脑上运行）
+
+```bash
+pip install requests soundfile numpy
+export ELEVENLABS_API_KEY=你的key            # Windows: set ELEVENLABS_API_KEY=你的key
+export EL_VOICE_ARGUS=阿格斯的voice_id        # 可选，在 ElevenLabs Voice Library 里复制
+export EL_VOICE_LIN=林夏的voice_id            # 可选
+python tts/gen_elevenlabs.py                  # 生成全部 74 句，覆盖 build/tts/ 并更新 meta.json
+python tts/gen_elevenlabs.py L030 L074        # 只重做某几句
+```
+
+脚本会把前后句作为上下文传给 ElevenLabs，句与句之间的语调会连贯得多；直接使用规范中文文本，不再需要 Kokoro 的同音字处理。生成后按上面的流程重建时间轴、配乐、混音并渲染。若要调整停顿，改 `script/lines.py` 里各句的 `post`。
