@@ -9,7 +9,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+
+
+def ep_dir(ep):
+    """本地结构 build/<EP>/，仓库平铺结构 <EP>/，两种都认。"""
+    for cand in (ROOT / "build" / ep, HERE / ep):
+        if cand.exists():
+            return cand
+    return ROOT / "build" / ep
 
 
 def duration(p: Path) -> float:
@@ -22,7 +31,7 @@ def main():
     if len(sys.argv) != 2:
         sys.exit(__doc__)
     ep = sys.argv[1]
-    base = ROOT / "build" / ep
+    base = ep_dir(ep)
     video = base / f"{ep}_motion.mp4"
     total = duration(video)
 

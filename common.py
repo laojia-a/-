@@ -6,13 +6,23 @@ from pathlib import Path
 import motion as M
 from motion import *  # noqa: F401,F403
 
-ROOT = Path(__file__).resolve().parent.parent
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+
+
+def ep_dir(ep):
+    """本地结构是 tools/ + build/<EP>/；仓库里是平铺的 *.py + <EP>/。两种都认。"""
+    for cand in (ROOT / "build" / ep, HERE / ep):
+        if cand.exists():
+            return cand
+    return ROOT / "build" / ep
 
 
 class Episode:
     def __init__(self, ep):
         self.ep = ep
-        self.base = ROOT / "build" / ep
+        self.base = ep_dir(ep)
+        self._durs = {}
         self.narr = {}
         for line in (self.base / "narration.tsv").read_text(encoding="utf-8").splitlines():
             lid, _s, t = line.split("\t", 2)
@@ -23,12 +33,31 @@ class Episode:
         return ROOT / "build" / ep / "frames" / f"{ep}_{shot}.png"
 
     def line_dur(self, lid):
+        if lid in self._durs:
+            return self._durs[lid]
         mp3 = self.base / "tts" / f"{lid}.mp3"
         if mp3.exists():
             r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                                 "-of", "csv=p=0", str(mp3)], capture_output=True, text=True)
-            return float(r.stdout) + 0.45
-        return max(2.4, len(self.narr.get(lid, "")) / 4.2 + 0.6)
+            d = float(r.stdout) + 0.45
+        else:
+            d = max(2.4, len(self.narr.get(lid, "")) / 4.2 + 0.6)
+        self._durs[lid] = d
+        return d
+
+    def cue(self, g, i, kw="", after=False, off=0.0):
+        """第 i 句旁白里念到关键词 kw 的时刻（组内秒数），按字数比例估算。
+        after=True 取关键词念完的时刻。用来让画面对上配音里具体的词。"""
+        lid = g.lines[i]
+        s = self.narr[lid]
+        if not kw:
+            return g.beat(i) + off
+        k = s.find(kw)
+        if k < 0:
+            raise ValueError(f"{lid} 里没有“{kw}”")
+        if after:
+            k += len(kw)
+        return g.beat(i) + (self.line_dur(lid) - 0.45) * k / len(s) + off
 
     def L(self, *nums):
         return [f"{self.ep}_{n:03d}" for n in nums]
@@ -70,7 +99,12 @@ class Episode:
         with (self.base / "sfx_plan.tsv").open("w", encoding="utf-8") as f:
             for g0, g in starts:
                 for name, at, *vol in g.sfx:
-                    lt = at if isinstance(at, (int, float)) else g.beat(at[0], 0) + at[1]
+                    if callable(at):          # lambda g: 组内秒数（如 E.cue(...)）
+                        lt = at(g)
+                    elif isinstance(at, (int, float)):
+                        lt = at
+                    else:
+                        lt = g.beat(at[0], 0) + at[1]
                     f.write(f"{name}\t{g0 + lt:.3f}\t{vol[0] if vol else 0.6}\n")
         print(f"{out}  {total / 60:.1f} 分钟")
 
@@ -332,7 +366,8 @@ def glyph_points(s, size, family="Georgia", step=8, limit=900, seed=0):
     c.select_font_face(family, cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
     c.set_font_size(size)
     e = c.text_extents(s)
-    c.move_to(gw / 2 - e.x_bearing - e.width / 2, gh / 2 - e.y_bearing - e.height / 2)
+    xb, yb, ew, eh = e[0], e[1], e[2], e[3]   # 下标写法 pycairo / cairocffi 通用
+    c.move_to(gw / 2 - xb - ew / 2, gh / 2 - yb - eh / 2)
     c.show_text(s)
     surf.flush()
     a = np.frombuffer(surf.get_data(), np.uint8).reshape(gh, surf.get_stride())[:, :gw]

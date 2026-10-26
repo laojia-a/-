@@ -7,7 +7,7 @@ B站临床药理科普系列，署名"支线进行中"。副题"每一个剂量�
 
 | 事项 | 决定 |
 | --- | --- |
-| 系列名 | 《剂量》，副题"一颗新药，从第一剂到说明书" |
+| 系列名 | 《剂量》，副题"每一个剂量，都是一次决定 / Every dose is a decision" |
 | 开季 | EP01 一顿饭（阿比特龙食物效应） |
 | TGN1412 | 降级。EP03 只用约 60 秒交代，主线讲改名 TAB08 后以约千分之一剂量重新试验 |
 | 主角药 | 伊布替尼贯穿 EP05 / EP08 / EP10，琥珀色胶囊轮廓为固定标识 |
@@ -21,7 +21,7 @@ B站临床药理科普系列，署名"支线进行中"。副题"每一个剂量�
 
 | 集 | 标题 | 锚点 | 脚本 | 事实核查 | 关键帧 | 动画 | 配音 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| EP01 | 一顿饭 | ZYTIGA / YONSA | v2（narration.tsv 已是 v2，28 句） | F1–F9 已清；F10–F14 待核 | 11/11 为 v1 画面 | tools/ep01.py 仍是 v1（与 归档/ep01_v1.py 相同，35 句），需按 v2 重写；v1 成片在 build/EP01/v1/ | ElevenLabs 28/28 已按 v2 生成；002/008/009/020/021 含待核内容，核实后可能要重做 |
+| EP01 | 一顿饭 | ZYTIGA / YONSA | v2（narration.tsv 已是 v2，28 句） | F1–F14 已核；F15 待核（发布前） | 不用关键帧，全部代码绘制 | ep01.py 已按 v2 重写（10-26），全片 6 分 10 秒；详见 进度_EP01_v2.md | ElevenLabs 28/28，与 narration.tsv 一致 |
 | EP02 | 加倍 | 加巴喷丁 | v1（10-25 统一） | 待核 1：F3 | shots 10，s01/s02 改黄色胶囊需重生 | 已渲染（旧胶囊画面） | 未做 |
 | EP03 | 第一剂 | TGN1412 → TAB08 | v2（10-25 统一） | 待核 10：F1–F10 | shots 13，已生图 | 待做 | 未做 |
 | EP04 | 第五天 | BIA 10-2474 | v1（10-25 统一） | 已清（F10 删除） | 12/12 | tools/ep04.py 已写，smoke 通过，未全片渲染 | 未做 |
@@ -92,3 +92,6 @@ B站临床药理科普系列，署名"支线进行中"。副题"每一个剂量�
 - 权限设置禁止读取工作目录以外的文件。`E:\AI 视频\2.临床试验`（含《监查者》旧项目）已加入可读目录；用户主目录不可读。
 - 中文 Windows 控制台输出乱码时加 `PYTHONIOENCODING=utf-8`。
 - 网络核查：WebSearch 在此环境可能只凭记忆作答，不可作为来源；用 WebFetch / curl 直接抓 DailyMed、accessdata.fda.gov、PubMed eutils。
+- 目录结构：本地是 `tools/*.py` + `build/<EP>/`；GitHub 仓库是平铺的 `*.py` + `<EP>/`。`common.ep_dir()` 和 `mix.py` 两种都认，不用挪文件。
+- 云端沙盒（Kiro Web）预览：pycairo 装不上，用 cairocffi 顶替；字体用 Noto Sans/Serif CJK 顶替微软雅黑和思源宋体，字形和本地略有不同，正式成片在本地出。
+- ElevenLabs CLI（`npx @elevenlabs/cli onboard`）在仓库根目录写 `.env`，已加进 `.gitignore`。`gen_tts.py` 目前读的是 `.env.local` 和环境变量。

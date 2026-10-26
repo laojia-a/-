@@ -1,0 +1,7 @@
+# Local secrets written by `elevenlabs onboard`
+/.env
+# 大文件与缓存：成片和无声动画在本地重出，仓库只放 720p 预览
+__pycache__/
+*_motion.mp4
+*_final.mp4
+EP01/preview/still_*.png
