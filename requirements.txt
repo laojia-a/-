@@ -1,0 +1,6 @@
+elevenlabs==2.74.1
+numpy
+pillow
+pycairo==1.28.0
+python-dotenv==1.2.2
+requests

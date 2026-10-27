@@ -1,0 +1,2 @@
+{ "name": "dose-render", "private": true,
+  "dependencies": { "puppeteer-core": "^25.15.0", "@sparticuz/chromium": "^153.0.0", "three": "^0.186.1" } }
