@@ -1,0 +1,14 @@
+[L001]  2.82s CER=0.00
+  SUB: 你好，我是这部片子的叙述者。
+  ASR: 你好我是这部片子的叙述者
+  PY : 你好(ni2 hao3) 我(uo3) 是(shiii4) 这部(zhe4 bu4) 片子(pian1 zii5) 的(de5) 叙述者(xv4 shu4 zhe3)
+
+[L002]  3.68s CER=0.29  <<<<< CHECK
+  SUB: 此刻，我正同时注视着12,000个目标。
+  ASR: 此刻我正同时注视着一万两千个目标
+  PY : 此刻(cii3 ke4) 我(uo3) 正(zheng4) 同时(tong2 shiii2) 注视(zhu4 shiii4) 着(zhe5) 一万两千(i2 uan4 liang3 qian1) 个(ge5) 目标(mu4 biao1)
+
+[L003]  2.62s CER=0.00
+  SUB: 这是第一章的第一句旁白。
+  ASR: 这是第一章的第一句旁白
+  PY : 这(zhe4) 是(shiii4) 第一章(di4 i1 zhang1) 的(de5) 第一句(di4 i1 jv4) 旁白(pang2 bai2)
