@@ -1,0 +1,6 @@
+{
+  "default": -26,
+  "under_voice_db": 8.5,
+  "scenes": { "s00_open": -24, "s01_hbo": -30, "s02_hollywood": -22 },
+  "fixed": {}
+}

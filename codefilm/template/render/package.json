@@ -1,0 +1,3 @@
+{ "name": "codefilm-render", "private": true,
+  "dependencies": { "puppeteer-core": "^25.15.0", "puppeteer": "^25.15.0", "three": "^0.186.1" },
+  "optionalDependencies": { "@sparticuz/chromium": "^153.0.0" } }
