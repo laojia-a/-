@@ -1,0 +1,8 @@
+# studio 工程的 Python 依赖（2026-10 沙盒实测可复现的版本）
+# 安装：pip install -r requirements.txt && pip install --no-deps tinysoundfont==0.3.7
+numpy==2.4.6
+scipy==1.17.1
+soundfile==0.14.0
+pyloudnorm==0.2.0
+pillow==13.0.0
+requests          # 只有 tts/gen_elevenlabs.py 用

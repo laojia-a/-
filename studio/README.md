@@ -33,22 +33,30 @@ EP=EP01 node render.js frames 0 <总帧数> 6        # 总帧数见 timeline.jso
 cd ..
 ```
 
-成片编码为两遍 x264，色彩按 BT.709 标注。JPEG 帧是 BT.601 全范围，必须显式转换，否则播放器会偏色：
+编码用 `encode.sh`（两遍 x264；帧是 BT.601 全范围 JPEG，脚本里显式转成 BT.709，否则播放器偏色）：
 
 ```bash
-VF="scale=in_color_matrix=bt601:in_range=pc:out_color_matrix=bt709:out_range=tv,format=yuv420p"
-ffmpeg -framerate 30 -i .cache/frames/EP01/%06d.jpg -vf "$VF" -c:v libx264 -preset slow -b:v 1500k \
-  -x264-params aq-mode=3:aq-strength=0.85 -pass 1 -an -f null /dev/null
-ffmpeg -framerate 30 -i .cache/frames/EP01/%06d.jpg -i build/EP01/audio/mix.wav -vf "$VF" \
-  -c:v libx264 -preset slow -b:v 1500k -x264-params aq-mode=3:aq-strength=0.85 -pass 2 \
-  -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv \
-  -c:a aac -b:a 192k -shortest -movflags +faststart EP01.mp4
+./encode.sh EP01 EP01.mp4                 # 在线观看版 1500 kbps，7.5 分钟约 95 MB，放得进 GitHub（与《监查者》在线版同档）
+MODE=master ./encode.sh EP01 EP01_B站.mp4  # 上传 B 站用的母版，CRF 16，不进仓库
 ```
 
-1500 kbps 是“在线观看版”，7.5 分钟约 95 MB，放得进 GitHub 的 100 MB 单文件上限，与《监查者》在线版同档。上传 B 站用的母版改成 `-crf 16`、不走两遍，不进仓库。
+## 改片子从哪下手
+
+所有素材都由代码生成，仓库里没有中间素材文件：帧、音频分轨、时间轴都能从源码重建（10-27 从全新克隆重跑验证：时间轴、四条音频分轨、母带与原工程逐样本一致；抽查 15 帧，10 帧逐像素一致，其余是 JPEG 量化级的差异，PSNR ≥ 58 dB）。
+
+| 想改 | 改哪 | 之后重跑 |
+| --- | --- | --- |
+| 字幕 / 旁白文字、停顿 | `episodes/EP01/lines.py` | 全部（时间会变） |
+| 某个场景的画面 | `episodes/EP01/act*.js`（`def('sXX_…')`），共用组件在 `lib.js` | 先 `previewg` 看几帧；定了再删掉该场景的帧（帧号 = 秒 × 30），`frames` 只补缺的帧 |
+| 某段配乐 | `episodes/EP01/score.py` 里对应的 `m_…()` | `audio/score.py` → `mix.py` → 重新编码（不用重渲画面） |
+| 某个音效 | `episodes/EP01/sfx.py` | `audio/sfx.py` → `mix.py` → 重新编码 |
+| 场景音乐电平 | `lines.py` 的 `MIX_TARGET` / `MIX_FIXED` | `mix.py` → 重新编码 |
+| 后期质感（泛光、颗粒、调色、故障） | 场景的 `post:`，或 `render/engine.js` | 重渲受影响的帧 |
+
+全片重渲约 50 分钟（8 核，约 4.5 帧/秒），两遍编码约 6 分钟。
 
 ## 依赖
 
-- Python 3.11+：`numpy scipy soundfile pyloudnorm pillow requests`；`tinysoundfont` 安装时加 `--no-deps`。
+- Python 3.11+：`pip install -r requirements.txt && pip install --no-deps tinysoundfont==0.3.7`。
 - Node 20+：`render/package.json`（puppeteer-core、@sparticuz/chromium、three）。在 Windows / macOS 上，要把 `render.js` 的 `executablePath` 换成本机 Chrome，并去掉 `chromium.args`。
 - ffmpeg（含 libx264）。
