@@ -1,0 +1,16 @@
+{
+  "name": "be-csr-review-promo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Procedural promo film for BE CSR Review (code-rendered visuals + synthesized audio).",
+  "scripts": {
+    "fonts": "bash scripts/fetch-fonts.sh",
+    "preview": "node src/render.js --preview",
+    "audio": "node src/audio.js",
+    "build": "node src/render.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.80",
+    "ffmpeg-static": "^5.2.0"
+  }
+}
