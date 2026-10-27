@@ -124,13 +124,17 @@ def write_srt():
     print("srt lines", k - 1)
 
 def main():
-    # ---- 旁白
+    # ---- 旁白：有配音就混入；没有配音（暂不配）就出“音乐+音效”混音（M&E），
+    #      旁白位置照样按句子时间窗压低音乐，接上配音后不用重新调音乐电平
     V = Bus(DUR + 6)
-    for ln in TL["lines"]:
+    have = [ln for ln in TL["lines"] if (BUILD / "tts" / f"{ln['id']}.wav").exists()]
+    for ln in have:
         x, sr = sf.read(BUILD / "tts" / f"{ln['id']}.wav", dtype="float32")
         y = voice_fx(x, ln["spk"], sr)
         V.add(y, ln["start"], 1.0)
     voice = V.a[:NTOT]
+    ME = not have
+    print("  旁白：" + (f"{len(have)} 句配音" if have else "暂不配音 → 输出音乐+音效混音（M&E）"))
     # ---- 音乐（分场景电平）
     mus, _ = sf.read(BUILD / "audio" / "music.wav", dtype="float32"); mus = np.pad(mus, ((0, max(0, NTOT - len(mus))), (0, 0)))[:NTOT]
     TARGET = LINES_MOD.MIX_TARGET
@@ -147,11 +151,18 @@ def main():
     gcurve = undb(smooth_curve(keys_t, keys_v, NTOT, ramp=.9))
     mus = mus * gcurve[:, None]
     # ---- 闪避：旁白包络 → 音乐 -7dB / 环境 -4dB
-    vm = np.abs(voice).max(1); env = maximum_filter1d(vm, secs(.05))
-    b, a = signal.butter(1, 2.0 / (SR / 2)); env = signal.lfilter(b, a, env)
-    act = np.clip((db(env) + 50) / 14, 0, 1)
-    act = maximum_filter1d(act, secs(.25)); act = signal.lfilter(*signal.butter(1, 1.4 / (SR / 2)), act)
-    duck_m = undb(-9.0 * act).astype(np.float32); duck_a = undb(-5 * act).astype(np.float32)
+    if ME:   # 按旁白时间窗生成闪避包络
+        act = np.zeros(NTOT, np.float32)
+        for ln in TL["lines"]:
+            act[secs(ln["start"]):secs(ln["end"])] = 1.0
+        act = signal.lfilter(*signal.butter(1, 1.4 / (SR / 2)), maximum_filter1d(act, secs(.25)))
+    else:
+        vm = np.abs(voice).max(1); env = maximum_filter1d(vm, secs(.05))
+        b, a = signal.butter(1, 2.0 / (SR / 2)); env = signal.lfilter(b, a, env)
+        act = np.clip((db(env) + 50) / 14, 0, 1)
+        act = maximum_filter1d(act, secs(.25)); act = signal.lfilter(*signal.butter(1, 1.4 / (SR / 2)), act)
+    # 无配音（M&E）时只轻压 4 dB：字幕时段给音乐留一点呼吸，又不会一句一句地“抽”
+    duck_m = undb((-4.0 if ME else -9.0) * act).astype(np.float32); duck_a = undb((-2.5 if ME else -5.0) * act).astype(np.float32)
     mus = mus * duck_m[:, None]
     sfx, _ = sf.read(BUILD / "audio" / "sfx.wav", dtype="float32"); sfx = np.pad(sfx, ((0, max(0, NTOT - len(sfx))), (0, 0)))[:NTOT]
     amb, _ = sf.read(BUILD / "audio" / "amb.wav", dtype="float32"); amb = np.pad(amb, ((0, max(0, NTOT - len(amb))), (0, 0)))[:NTOT]
@@ -170,7 +181,8 @@ def main():
     print(f"  bus limiters: sfx {20*np.log10(gs):.1f} dB, music {20*np.log10(gm):.1f} dB, voice {20*np.log10(gv):.1f} dB")
     mix = v_n + m_n + s_n + a_n
     L1 = METER.integrated_loudness(mix); mix = mix * undb(TGT - L1)
-    mix, gmin = limiter(mix, -1.2)
+    # 总限幅上限 −2 dBTP：成片要转 AAC，冲击/印章这类瞬态在编码后会冒出 1.5–2 dB（−1.2 时实测解码峰值到 +0.6 dBFS）
+    mix, gmin = limiter(mix, -2.0)
     L2 = METER.integrated_loudness(mix)
     mix = fade(mix, .02, 1.5)
     os.makedirs(BUILD / "audio", exist_ok=True)

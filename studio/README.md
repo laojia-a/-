@@ -1,38 +1,54 @@
 # studio：《剂量》制作工程（源自《监查者》）
 
-整片由代码生成，流程是“旁白 → 时间轴 → 画面 / 配乐 / 音效”。三者都从 `build/<EP>/timeline.json` 读时间，换配音后重建时间轴，画面和音乐会自动重新对齐。
+整片由代码生成，流程是“旁白 → 时间轴 → 画面 / 配乐 / 音效”。三者都从 `build/<EP>/timeline.json` 读时间：换配音后重建时间轴，画面、音乐、音效会自动重新对齐。
+
+**系列标准**：每一集、每一个场景都走完整套后期（泛光、色差、颗粒、调色、故障、转场）和作曲引擎（逐拍配乐 + 对位音效 + 母带）。不允许出现只有画面、没有配乐或音效的段落，见 `系列制作规范_剂量.md`。
 
 ## 目录
 
 | 路径 | 内容 |
 | --- | --- |
-| `episodes/<EP>/lines.py` | 该集全部旁白：`sub` 字幕、`tts` 送进语音合成的文本（读音修正写这里）、`pre/post` 停顿、场景 `lead/tail/min_dur`；`MIX_TARGET` 各场景配乐电平 |
-| `episodes/<EP>/scenes.js` | 该集画面场景（Canvas2D，`def()` 注册，`transition()` 定义转场） |
-| `episodes/<EP>/score.py` | 该集配乐（`CUES` 列表，可选 `MASTER_KEYS` 全局静音自动化） |
-| `episodes/<EP>/sfx.py` | 该集音效表（`build_sfx()`） |
-| `render/` | `engine.js` 合成与后期（泛光、色差、颗粒、暗角、调色、故障、转场、字幕），`render.js` 并行逐帧渲染 |
-| `audio/` | `dsp.py` 合成音色与音效库，`score.py` 配乐引擎（GeneralUser GS 音色库），`sfx.py`，`mix.py` 混音母带（−16 LUFS）与 SRT |
-| `tts/` | `gen_kokoro.py` 临时配音，`build_timeline.py` 时间轴。ElevenLabs 正式配音脚本等密钥接通后再加（参照《监查者》`tts/gen_elevenlabs.py`：逐句传前后句上下文） |
+| `episodes/<EP>/lines.py` | 该集全部旁白，是字幕和配音唯一的来源：`sub` 字幕，`tts` 送进语音合成的文本（读音修正写这里），`pre/post` 停顿，场景 `lead/tail/min_dur`。另有 `MIX_TARGET`（各场景配乐电平）、`MIX_FIXED`（固定增益） |
+| `episodes/<EP>/scenes.js` | 场景入口：EP01 拆成 `lib.js`（共用组件）和 `act0–act5.js`（冷开场、四章、终章与收尾） |
+| `episodes/<EP>/score.py` | 该集配乐：`CUES` 列表，每个场景一个函数，按 `cue(句, 关键词)` 对拍；`MASTER_KEYS` 是全局静音自动化（骤停、定格） |
+| `episodes/<EP>/sfx.py` | 该集音效表 `build_sfx()`，时间公式与画面一致 |
+| `render/` | `engine.js` 负责合成与后期（泛光、色差、颗粒、暗角、调色、故障、转场、字幕），`render.js` 负责并行逐帧渲染 |
+| `audio/` | `dsp.py` 合成音色与音效库，`score.py` 配乐引擎（GeneralUser GS 音色库），`sfx.py`，`mix.py` 混音母带（−16 LUFS，−2 dBTP）与 SRT |
+| `tts/` | `gen_elevenlabs.py` 正式配音，`estimate.py` 无配音时估算时长，`build_timeline.py` 生成时间轴 |
 | `assets/` | 字体（OFL / Apache）与音色库 |
 
-`build/`、`.cache/`（帧、模型）、`render/node_modules/` 不进仓库。
+`build/`、`.cache/`（帧缓存）、`render/node_modules/` 不进仓库。
 
 ## 一集的完整流程
 
 ```bash
 cd studio
-python tts/gen_kokoro.py EP01            # 临时配音；正式版换 ElevenLabs
+python tts/gen_elevenlabs.py EP01        # 有密钥时：真实配音（逐字时间戳）；没有就用下一行
+python tts/estimate.py EP01              # 无配音：按 4.4 音节/秒估算，混音自动出“音乐 + 音效”版（M&E）
 python tts/build_timeline.py EP01
 python audio/score.py EP01 && python audio/sfx.py EP01 && python audio/mix.py EP01
 cd render && npm install
-EP=EP01 node render.js frames 0 <总帧数> 6        # 总帧数见 timeline.json 的 frames
-EP=EP01 node render.js previewg <目录> 3.4 19.2   # 按全片秒数出预览帧
-cd .. && ffmpeg -framerate 30 -i .cache/frames/EP01/%06d.jpg -i build/EP01/audio/mix.wav \
-  -c:v libx264 -crf 18 -pix_fmt yuv420p -c:a aac -b:a 320k -shortest EP01.mp4
+EP=EP01 node render.js previewg <目录> 3.4 19.2   # 按全片秒数出预览帧，先看
+EP=EP01 node render.js frames 0 <总帧数> 6        # 总帧数见 timeline.json 的 frames；已有的帧会跳过
+cd ..
 ```
+
+成片编码为两遍 x264，色彩按 BT.709 标注。JPEG 帧是 BT.601 全范围，必须显式转换，否则播放器会偏色：
+
+```bash
+VF="scale=in_color_matrix=bt601:in_range=pc:out_color_matrix=bt709:out_range=tv,format=yuv420p"
+ffmpeg -framerate 30 -i .cache/frames/EP01/%06d.jpg -vf "$VF" -c:v libx264 -preset slow -b:v 1500k \
+  -x264-params aq-mode=3:aq-strength=0.85 -pass 1 -an -f null /dev/null
+ffmpeg -framerate 30 -i .cache/frames/EP01/%06d.jpg -i build/EP01/audio/mix.wav -vf "$VF" \
+  -c:v libx264 -preset slow -b:v 1500k -x264-params aq-mode=3:aq-strength=0.85 -pass 2 \
+  -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv \
+  -c:a aac -b:a 192k -shortest -movflags +faststart EP01.mp4
+```
+
+1500 kbps 是“在线观看版”，7.5 分钟约 95 MB，放得进 GitHub 的 100 MB 单文件上限，与《监查者》在线版同档。上传 B 站用的母版改成 `-crf 16`、不走两遍，不进仓库。
 
 ## 依赖
 
-- Python 3.11+：`numpy scipy soundfile pyloudnorm pillow`，`tinysoundfont`（加 `--no-deps`），临时配音另需 `kokoro-onnx==0.6.1 misaki[zh]==0.9.4`。
-- Kokoro 模型放在 `.cache/models/` 或用 `DOSE_MODELS` 指定：`kokoro-v1.1-zh.onnx`、`voices-v1.1-zh.bin`（thewh1teagle/kokoro-onnx releases）；`config-v1.1-zh.json` 由 sherpa-onnx `kokoro-int8-multi-lang-v1_1` 的 `tokens.txt` 生成，方法见《监查者》`setup.sh`。
+- Python 3.11+：`numpy scipy soundfile pyloudnorm pillow requests`；`tinysoundfont` 安装时加 `--no-deps`。
 - Node 20+：`render/package.json`（puppeteer-core、@sparticuz/chromium、three）。在 Windows / macOS 上，要把 `render.js` 的 `executablePath` 换成本机 Chrome，并去掉 `chromium.args`。
+- ffmpeg（含 libx264）。

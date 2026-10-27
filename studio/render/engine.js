@@ -237,9 +237,11 @@ function drawOverlay(g, post, extra) {
     for (const ln of E.tl.lines) {
       if (g < ln.start - .15 || g > ln.end + .25) continue;
       const segs = ln.segs || [{ text: ln.sub, start: ln.start, end: ln.end }];
-      for (const sg of segs) {
-        if (g < sg.start - .12 || g > sg.end + .22) continue;
-        const a = Math.min(smooth(p(g, sg.start - .12, sg.start + .05)), 1 - smooth(p(g, sg.end + .02, sg.end + .22)));
+      for (let si = 0; si < segs.length; si++) {
+        const sg = segs[si];
+        const a0 = si === 0 ? sg.start - .08 : sg.start, a1 = si === segs.length - 1 ? sg.end + .15 : sg.end;
+        if (g < a0 || g > a1) continue;
+        const a = Math.min(smooth(p(g, a0, a0 + .12)), 1 - smooth(p(g, a1 - .12, a1)));
         if (a <= 0) continue;
         any = true;
         drawSub(sg.text, ln.spk, a, ln.sub_en);
