@@ -7,5 +7,4 @@ scipy
 librosa
 pyloudnorm
 pillow
-tinysoundfont   # 安装时加 --no-deps（它会拉 pyaudio，用不到）
 matplotlib

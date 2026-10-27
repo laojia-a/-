@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """根据 TTS 实际时长生成全片时间轴 build/timeline.json（画面/音乐/音效/字幕共用）。"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import json, re, importlib.util
 
 import os as _os
 from pathlib import Path as _P
 ROOT = str(_P(__file__).resolve().parents[1])
-CACHE = _os.environ.get("JCZ_CACHE", ROOT + "/.cache")
+CACHE = _os.environ.get("CODEFILM_CACHE") or str(_P.home() / ".cache" / "codefilm")
 
 spec = importlib.util.spec_from_file_location("lines", f"{ROOT}/script/lines.py")
 L = importlib.util.module_from_spec(spec); spec.loader.exec_module(L)

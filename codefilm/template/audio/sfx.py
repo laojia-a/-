@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """音效与环境声。时间点用和画面相同的公式（如 ls('L002') + .5），保证声画同步。可用音效见 dsp.py 的 sfx_* / amb_*。"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os, json, numpy as np, soundfile as sf
 from pathlib import Path
 from dsp import *

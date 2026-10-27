@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """混音与母带：旁白处理（阿格斯/林夏/历史引文）、音乐分场景电平、旁白闪避、响度标准化、真峰值限制。
 输出：build/audio/mix.wav（48k/24bit）、build/audio/voice.wav，以及 output/字幕.srt"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import json, os, re
 import numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy import signal
@@ -10,7 +12,7 @@ from dsp import *
 import os as _os
 from pathlib import Path as _P
 ROOT = str(_P(__file__).resolve().parents[1])
-CACHE = _os.environ.get("JCZ_CACHE", ROOT + "/.cache")
+CACHE = _os.environ.get("CODEFILM_CACHE") or str(_P.home() / ".cache" / "codefilm")
 OUT = ROOT + "/output"
 TL = json.load(open(f"{ROOT}/build/timeline.json", encoding="utf-8"))
 DUR = TL["duration"]; NTOT = secs(DUR)
@@ -93,6 +95,18 @@ def limiter(x, ceil_db=-1.0, look=.005, rel=.08):
     g = minimum_filter1d(g, secs(look) + 1)
     return (x * g[:, None]).astype(np.float32), float(g.min())
 
+def analog(x, drive=1.6, width=1.15):
+    """磁带式软饱和（只作用于较响的部分，补偶次谐波）+ 中/侧展宽。drive=1 关闭饱和，width=1 关闭展宽"""
+    if drive > 1:
+        pk = np.abs(x).max() + 1e-9; y = x / pk
+        y = np.tanh(y * drive) / np.tanh(drive) + .04 * (y ** 2 - np.mean(y ** 2, axis=0))
+        x = (y * pk).astype(np.float32)
+    if width != 1 and x.ndim == 2:
+        mid = (x[:, 0] + x[:, 1]) / 2; side = (x[:, 0] - x[:, 1]) / 2 * width
+        side = hp(side.astype(np.float32), 180)          # 低频保持单声道
+        x = np.stack([mid + side, mid - side], 1).astype(np.float32)
+    return x
+
 def srt_time(t):
     h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h:02d}:{m:02d}:{int(s):02d},{int(round((s - int(s)) * 1000)):03d}".replace(",1000", ",999")
@@ -160,6 +174,8 @@ def main():
     v_n = voice * voice_g * G; m_n = mus * G; s_n = sfx * sfx_g * G + hits * hits_g * G; a_n = amb * amb_g * G
     s_n = compress(s_n, thr=-21, ratio=3.0); s_n, gs = limiter(s_n, -5.0, look=.003, rel=.15); m_n = compress(m_n, thr=-17, ratio=2.5, att=.02, rel=.35); m_n, gm = limiter(m_n, -6.0, look=.005, rel=.25); v_n, gv = limiter(v_n, -3.5, look=.002, rel=.06)
     print(f"  bus limiters: sfx {20*np.log10(gs):.1f} dB, music {20*np.log10(gm):.1f} dB, voice {20*np.log10(gv):.1f} dB")
+    m_n = analog(m_n, drive=LV.get("tape_drive", 1.6), width=LV.get("music_width", 1.15))   # 磁带饱和 + 声场展宽：音乐更“厚”
+    s_n = analog(s_n, drive=1.2, width=1.0)
     mix = v_n + m_n + s_n + a_n
     L1 = METER.integrated_loudness(mix); mix = mix * undb(TGT - L1)
     mix, gmin = limiter(mix, -1.2)

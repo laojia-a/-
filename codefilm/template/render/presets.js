@@ -6,11 +6,21 @@ export const P = {
     bloom: .55, thr: .7, ca: .0012, vig: .42, grain: .03, grainSize: 1.6, sat: 1.05, con: 1.08,
     filmic: .85, split: .55, shadowTint: [-.03, .015, .05], highTint: [.06, .02, -.035],
     streak: .55, streakTint: [.5, .78, 1.25], halation: .18, bars: 2.39, weave: .5, black: .012,
+    soft: .5, chromaVig: .6, grainChroma: .25, flicker: .2,
   },
   hbo: { // 高端剧集：低调光、去饱和、偏冷暗部、抬升黑位、克制泛光、细颗粒、2.0 遮幅
     bloom: .22, thr: .85, ca: .0008, vig: .55, grain: .045, grainSize: 1.4, sat: .78, con: 1.02,
     filmic: .9, split: .35, shadowTint: [-.015, .01, .03], highTint: [.03, .02, -.01],
     streak: 0, halation: .1, bars: 2.0, weave: .3, black: .028, tint: [1, .99, .97],
+    soft: .6, chromaVig: .8, grainChroma: .35, flicker: .15,
+  },
+  bleach: { // 漂白：战争片 / 惊悚（《拯救大兵瑞恩》式）——低饱和、高反差、金属感高光
+    bloom: .3, thr: .8, ca: .001, vig: .58, grain: .06, grainSize: 1.7, sat: .55, con: 1.12, filmic: .85, bleach: .7,
+    split: .25, halation: .08, bars: 2.39, weave: .5, black: .02, soft: .5, chromaVig: .5, grainChroma: .2, flicker: .25,
+  },
+  dream: { // 回忆 / 梦境：漏光、柔光、偏暖、低对比
+    bloom: .7, thr: .6, ca: .0016, vig: .5, grain: .05, grainSize: 1.8, sat: .9, con: .94, filmic: .85, leak: .35,
+    split: .3, highTint: [.06, .03, -.02], halation: .3, bars: 2.0, weave: .7, black: .035, soft: .8, flicker: .35, grainChroma: .4,
   },
   noir: { // 冷峻黑白剧集 / 回忆
     bloom: .2, thr: .86, ca: .0008, vig: .62, grain: .07, grainSize: 1.8, sat: 0, con: 1.12, filmic: .9, halation: .12, bars: 2.0, weave: .6, black: .03,
@@ -28,6 +38,8 @@ export const P = {
   ui:      { bloom: .5,  thr: .76, ca: .0016, vig: .5,  grain: .036 },
   climax:  { bloom: .95, thr: .58, ca: .0024, vig: .5,  grain: .035, tint: [.96, 1.02, 1.08] },
 };
+// 质感参数速查：soft 镜头边缘柔化 · chromaVig 边缘偏冷 · grainChroma 彩色颗粒 · flicker 曝光闪烁 · leak/leakTint 漏光 · bleach 漂白
+// dither 默认 1（消除暗部色带，勿关）。运动模糊在渲染时开：CODEFILM_MOTION_BLUR=4（耗时 ×4）
 // 两个预设之间插值（用于同一场景内情绪渐变）
 export function mixP(a, b, k) {
   const o = {}; const keys = new Set([...Object.keys(a), ...Object.keys(b)]);

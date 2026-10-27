@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """用 ASR（无ITN）回听已生成音频，与 TTS 文本逐字比较，标出可疑句。"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import re, json, importlib.util, sys
 import numpy as np, soundfile as sf, librosa, sherpa_onnx
 
 import os as _os
 from pathlib import Path as _P
 ROOT = str(_P(__file__).resolve().parents[1])
-CACHE = _os.environ.get("JCZ_CACHE", ROOT + "/.cache")
+CACHE = _os.environ.get("CODEFILM_CACHE") or str(_P.home() / ".cache" / "codefilm")
 M = CACHE + "/models"
 spec = importlib.util.spec_from_file_location("lines", f"{ROOT}/script/lines.py")
 L = importlib.util.module_from_spec(spec); spec.loader.exec_module(L)

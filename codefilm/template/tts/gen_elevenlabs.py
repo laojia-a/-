@@ -9,6 +9,8 @@
   EL_MODEL   默认 eleven_multilingual_v2（也可用 eleven_v3）
 依赖：pip install requests soundfile numpy
 """
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os, sys, json, base64, io, re, time, importlib.util
 import requests, numpy as np, soundfile as sf
 

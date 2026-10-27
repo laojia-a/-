@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """分析音频：按场景统计响度/峰值，并输出波形+响度曲线图供检查。用法: python analyze.py file.wav out.png"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import sys, json
 import numpy as np, soundfile as sf, pyloudnorm as pyln
 import matplotlib

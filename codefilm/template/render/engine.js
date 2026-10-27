@@ -134,8 +134,9 @@ function initGL() {
       uGlitch: { value: 0 }, uSat: { value: 1 }, uCon: { value: 1 }, uExp: { value: 1 }, uScan: { value: 0 }, uTint: { value: new THREE.Vector3(1, 1, 1) },
       uLift: { value: new THREE.Vector3(0, 0, 0) }, uWarp: { value: 0 },
       tStreak: { value: rtS2.texture }, uStreak: { value: 0 }, uStreakTint: { value: new THREE.Vector3(.55, .8, 1.2) }, uFilmic: { value: 0 }, uSplit: { value: 0 }, uShadowTint: { value: new THREE.Vector3(-.02, .01, .04) }, uHighTint: { value: new THREE.Vector3(.05, .015, -.03) },
-      uHalation: { value: 0 }, uBars: { value: 0 }, uWeave: { value: 0 }, uBlack: { value: 0 }, uGrainSize: { value: 1 } },
-    fragmentShader: `uniform sampler2D tComp,tB1,tB2,tOv,tStreak; uniform float uHasOv,uBloom,uCA,uVig,uGrain,uTime,uFade,uFlash,uGlitch,uSat,uCon,uExp,uScan,uWarp,uStreak,uFilmic,uSplit,uHalation,uBars,uWeave,uBlack,uGrainSize; uniform vec3 uTint,uLift,uStreakTint,uShadowTint,uHighTint; varying vec2 vUv;
+      uHalation: { value: 0 }, uBars: { value: 0 }, uWeave: { value: 0 }, uBlack: { value: 0 }, uGrainSize: { value: 1 },
+      uFlicker: { value: 0 }, uLeak: { value: 0 }, uLeakTint: { value: new THREE.Vector3(1, .45, .15) }, uBleach: { value: 0 }, uSoft: { value: 0 }, uChromaVig: { value: 0 }, uDither: { value: 1 }, uGrainChroma: { value: 0 } },
+    fragmentShader: `uniform sampler2D tComp,tB1,tB2,tOv,tStreak; uniform float uHasOv,uBloom,uCA,uVig,uGrain,uTime,uFade,uFlash,uGlitch,uSat,uCon,uExp,uScan,uWarp,uStreak,uFilmic,uSplit,uHalation,uBars,uWeave,uBlack,uGrainSize,uFlicker,uLeak,uBleach,uSoft,uChromaVig,uDither,uGrainChroma; uniform vec3 uTint,uLift,uStreakTint,uShadowTint,uHighTint,uLeakTint; varying vec2 vUv;
     vec3 aces(vec3 x){ return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0); }
     float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
     void main(){
@@ -151,15 +152,22 @@ function initGL() {
       col += bl * uBloom;
       if(uHalation>0.0) col += texture2D(tB2, uv).rgb * vec3(1.0,0.32,0.12) * uHalation;   // 胶片晕：高光边缘的红橙光
       if(uStreak>0.0) col += texture2D(tStreak, uv).rgb * uStreakTint * uStreak;          // 变形宽银幕横向光条
+      if(uSoft>0.0){ float e = smoothstep(0.25, 0.75, length(d*vec2(1.0,0.75))); col = mix(col, (col + texture2D(tComp, uv + d*0.004).rgb + texture2D(tComp, uv - d*0.004).rgb)/3.0, e*uSoft); } // 镜头边缘柔化
       col *= uExp; col = col*uTint + uLift;
+      if(uFlicker>0.0) col *= 1.0 + (h(vec2(fr, 3.1)) - 0.5) * 0.06 * uFlicker;              // 曝光闪烁（老胶片/放映机）
+      if(uBleach>0.0){ float lb = dot(col, vec3(0.299,0.587,0.114)); vec3 ov = mix(2.0*col*lb, 1.0-2.0*(1.0-col)*(1.0-lb), step(0.5, lb)); col = mix(col, mix(vec3(lb), ov, 0.6), uBleach); } // 漂白（战争片/惊悚）
       if(uFilmic>0.0) col = mix(col, aces(col*1.35), uFilmic);                                 // 胶片影调：高光柔和滚降
       if(uSplit>0.0){ float lu = dot(col, vec3(0.299,0.587,0.114)); col += (uShadowTint*(1.0-smoothstep(0.0,0.55,lu)) + uHighTint*smoothstep(0.35,1.0,lu))*uSplit*2.0; } // 分离色调（青橙）
+      if(uLeak>0.0){ vec2 lp = vec2(-0.15 + 0.25*sin(uTime*0.13), 0.75 + 0.2*sin(uTime*0.21)); float lk = exp(-3.0*length((vUv - lp)*vec2(1.4,1.0))); col += uLeakTint * lk * uLeak * (0.8 + 0.2*sin(uTime*0.7)); } // 漏光
+      if(uChromaVig>0.0){ float cv = smoothstep(0.35, 1.0, length(d*vec2(1.0,0.86))*1.6); col.b += cv*0.04*uChromaVig; col.r -= cv*0.02*uChromaVig; } // 边缘偏冷
       col = max(col, vec3(uBlack));                                                            // 黑位抬升（HBO 式不死黑）
       float l = dot(col, vec3(0.299,0.587,0.114)); col = mix(vec3(l), col, uSat); col = (col-0.5)*uCon+0.5;
       float v = smoothstep(0.95, 0.15, length(d*vec2(1.0,0.86))); col *= mix(1.0-uVig, 1.0, v);
       if(uScan>0.0) col *= 1.0 - uScan*(0.5+0.5*sin(vUv.y*1080.0*3.14159265));
       float g = h(floor(vUv*vec2(1920.0,1080.0)/uGrainSize) + vec2(fract(uTime*7.31)*91.0, fract(uTime*3.17)*57.0)) - 0.5;
-      col += g*uGrain*(1.2 - l*0.6);
+      vec3 gc = vec3(g); if(uGrainChroma>0.0){ gc += vec3(h(vUv*vec2(1913.0,1077.0)+fr*0.37)-0.5, 0.0, h(vUv*vec2(1931.0,1069.0)+fr*0.53)-0.5)*uGrainChroma; }
+      col += gc*uGrain*(1.2 - l*0.6);
+      col += (h(vUv*vec2(1920.0,1080.0) + fract(uTime*13.7)) - 0.5) * uDither / 255.0;      // 抖动：消除暗部渐变色带
       col = mix(col, vec3(1.0), uFlash); col *= (1.0-uFade);
       if(uBars>0.0){ float bh = 0.5 - 0.5*(16.0/9.0)/uBars; if(vUv.y < bh || vUv.y > 1.0-bh) col = vec3(0.0); }   // 遮幅（如 2.39:1）
       if(uHasOv>0.5){ vec4 o = texture2D(tOv, vUv); col = col*(1.0-o.a) + o.rgb; }
@@ -169,7 +177,8 @@ function pass(mat, target) { quad.material = mat; R.setRenderTarget(target); R.r
 
 // ---------------------------------------------------------------- 场景注册 / 时间轴
 const DEFAULT_POST = () => ({ bloom: .45, thr: .78, ca: .0016, vig: .38, grain: .038, fade: 0, flash: 0, glitch: 0, sat: 1, con: 1, exp: 1, scan: 0, tint: [1, 1, 1], lift: [0, 0, 0], warp: 0, sub: true, mark: true,
-  streak: 0, streakTint: [.55, .8, 1.2], filmic: 0, split: 0, shadowTint: [-.02, .01, .04], highTint: [.05, .015, -.03], halation: 0, bars: 0, weave: 0, black: 0, grainSize: 1 });
+  streak: 0, streakTint: [.55, .8, 1.2], filmic: 0, split: 0, shadowTint: [-.02, .01, .04], highTint: [.05, .015, -.03], halation: 0, bars: 0, weave: 0, black: 0, grainSize: 1,
+  flicker: 0, leak: 0, leakTint: [1, .45, .15], bleach: 0, soft: 0, chromaVig: 0, dither: 1, grainChroma: 0 });
 export function def(id, obj) { E.scenes[id] = obj; }
 export function transition(id, spec) { E.trans[id] = spec; }
 
@@ -284,7 +293,7 @@ function drawSub(str, spk, a, en) {
 function boundaryAt(i) { // 第 i 个场景开始处的转场
   return Object.assign({ type: 'black', d: .8 }, E.trans[SC[i].id] || {});
 }
-export function renderFrame(f) {
+export function renderFrame(f, target = null) {
   const g = f / E.fps;
   let i = SC.findIndex(s => g >= s.start && g < s.end); if (i < 0) i = SC.length - 1;
   const sc = SC[i];
@@ -295,11 +304,11 @@ export function renderFrame(f) {
   if (nearIn && inB.type === 'cross') {
     const A = SC[i - 1], m = smooth(p(g, sc.start - inB.d / 2, sc.start + inB.d / 2));
     const pa = drawScene(A, g - A.start, rtA); const pb = drawScene(sc, g - sc.start, rtB);
-    matMix.uniforms.uMix.value = m; pass(matMix, rtMix); post = mixPost(pa, pb, m); post._src = rtMix;
+    matMix.uniforms.tA.value = rtA.texture; matMix.uniforms.tB.value = rtB.texture; matMix.uniforms.uMix.value = m; pass(matMix, rtMix); post = mixPost(pa, pb, m); post._src = rtMix;
   } else if (nearOut && outB.type === 'cross') {
     const B = SC[i + 1], m = smooth(p(g, sc.end - outB.d / 2, sc.end + outB.d / 2));
     const pa = drawScene(sc, g - sc.start, rtA); const pb = drawScene(B, g - B.start, rtB);
-    matMix.uniforms.uMix.value = m; pass(matMix, rtMix); post = mixPost(pa, pb, m); post._src = rtMix;
+    matMix.uniforms.tA.value = rtA.texture; matMix.uniforms.tB.value = rtB.texture; matMix.uniforms.uMix.value = m; pass(matMix, rtMix); post = mixPost(pa, pb, m); post._src = rtMix;
   } else {
     post = drawScene(sc, g - sc.start, rtA); post._src = rtA;
     const fadeT = (b, k) => (b.type === 'black' || b.type === 'white') ? k : 0;
@@ -332,7 +341,22 @@ export function renderFrame(f) {
   u.uFade.value = clamp(post.fade); u.uFlash.value = clamp(post.flash); u.uGlitch.value = post.glitch; u.uSat.value = post.sat; u.uCon.value = post.con;
   u.uExp.value = post.exp; u.uScan.value = post.scan; u.uTint.value.set(...post.tint); u.uLift.value.set(...post.lift); u.uWarp.value = post.warp;
   setCine(u, post);
-  pass(matFinal, null);
+  pass(matFinal, target);
+  return true;
+}
+
+// 运动模糊：在快门开启时间内渲染 n 个子帧并平均（shutter=0.5 即 180° 快门）。耗时 ×n
+let rtAccA, rtAccB, rtSub;
+export function renderFrameMB(f, n = 4, shutter = .5) {
+  if (!rtAccA) { rtAccA = makeRT(W, H); rtAccB = makeRT(W, H); rtSub = makeRT(W, H); }
+  let acc = rtAccA, other = rtAccB;
+  for (let k = 0; k < n; k++) {
+    renderFrame(f + (k / n - .5) * shutter, rtSub);
+    matMix.uniforms.tA.value = acc.texture; matMix.uniforms.tB.value = rtSub.texture; matMix.uniforms.uMix.value = 1 / (k + 1);
+    pass(matMix, other); [acc, other] = [other, acc];
+  }
+  matMix.uniforms.tA.value = acc.texture; matMix.uniforms.tB.value = acc.texture; matMix.uniforms.uMix.value = 0; pass(matMix, null);
+  matMix.uniforms.tA.value = rtA.texture; matMix.uniforms.tB.value = rtB.texture;
   return true;
 }
 
@@ -355,6 +379,8 @@ function setCine(u, q) {
   u.uStreak.value = q.streak; u.uStreakTint.value.set(...q.streakTint); u.uFilmic.value = q.filmic; u.uSplit.value = q.split;
   u.uShadowTint.value.set(...q.shadowTint); u.uHighTint.value.set(...q.highTint); u.uHalation.value = q.halation; u.uBars.value = q.bars;
   u.uWeave.value = q.weave; u.uBlack.value = q.black; u.uGrainSize.value = q.grainSize;
+  u.uFlicker.value = q.flicker; u.uLeak.value = q.leak; u.uLeakTint.value.set(...q.leakTint); u.uBleach.value = q.bleach; u.uSoft.value = q.soft;
+  u.uChromaVig.value = q.chromaVig; u.uDither.value = q.dither; u.uGrainChroma.value = q.grainChroma;
 }
 // 字幕位置随遮幅上移
 export function subBaseline() { return E._bars ? Math.min(H - 66, H / 2 + (W / E._bars) / 2 - 40) : H - 66; }

@@ -3,6 +3,8 @@
 用法: python gen_tts.py [line_id ...]
 输出: build/tts/<id>.wav (24kHz float) + build/tts/meta.json + build/tts/report.txt
 """
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os, sys, json, re, time, importlib.util
 import numpy as np
 import soundfile as sf
@@ -11,7 +13,7 @@ import librosa
 import os as _os
 from pathlib import Path as _P
 ROOT = str(_P(__file__).resolve().parents[1])
-CACHE = _os.environ.get("JCZ_CACHE", ROOT + "/.cache")
+CACHE = _os.environ.get("CODEFILM_CACHE") or str(_P.home() / ".cache" / "codefilm")
 
 M = f"{CACHE}/models"
 OUT = f"{ROOT}/build/tts"

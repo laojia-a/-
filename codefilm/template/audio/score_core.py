@@ -5,7 +5,8 @@ import numpy as np, tinysoundfont
 from pathlib import Path
 from dsp import *
 ROOT = str(Path(__file__).resolve().parents[1])
-SFP = os.environ.get("JCZ_SOUNDFONT", ROOT + "/assets/soundfont/GeneralUser-GS.sf2")
+CACHE = os.environ.get("CODEFILM_CACHE") or str(Path.home() / ".cache" / "codefilm")
+SFP = os.environ.get("CODEFILM_SOUNDFONT") or next((p for p in [ROOT + "/assets/soundfont/GeneralUser-GS.sf2", CACHE + "/soundfont/GeneralUser-GS.sf2"] if os.path.exists(p)), CACHE + "/soundfont/GeneralUser-GS.sf2")
 TL = json.load(open(f"{ROOT}/build/timeline.json", encoding="utf-8"))
 SC = {s["id"]: s for s in TL["scenes"]}; LN = {l["id"]: l for l in TL["lines"]}; DUR = TL["duration"]
 def ss(i): return SC[i]["start"]          # 场景开始

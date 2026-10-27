@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """渲染配乐：执行 cues.py 里的全部 CUES → build/audio/music.wav + hits.wav"""
+import sys as _sys
+if hasattr(_sys.stdout, "reconfigure"): _sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import os, time, soundfile as sf
 from score_core import *
 from cues import CUES
