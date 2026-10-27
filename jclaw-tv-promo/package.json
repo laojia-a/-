@@ -1,0 +1,15 @@
+{
+  "name": "jclaw-tv-promo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Procedural promo film for the JCLAW TV suite (code-rendered picture + synthesized score).",
+  "scripts": {
+    "fonts": "bash scripts/fetch-fonts.sh",
+    "preview": "node src/render.js --preview",
+    "audio": "node src/render.js --audio-only",
+    "build": "node src/render.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "0.1.88"
+  }
+}
