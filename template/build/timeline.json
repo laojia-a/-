@@ -1,0 +1,62 @@
+{
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "duration": 18.1333,
+ "frames": 544,
+ "scenes": [
+  {
+   "id": "s00_open",
+   "start": 0.0,
+   "end": 10.8,
+   "dur": 10.8,
+   "chapter": null,
+   "lines": [
+    "L001",
+    "L002"
+   ]
+  },
+  {
+   "id": "s01_chapter",
+   "start": 10.8,
+   "end": 18.1333,
+   "dur": 7.3333,
+   "chapter": [
+    "第一章",
+    "章节标题"
+   ],
+   "lines": [
+    "L003"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "id": "L001",
+   "scene": "s00_open",
+   "spk": "narrator",
+   "start": 2.0,
+   "end": 4.819,
+   "sub": "你好，我是这部片子的叙述者。",
+   "sub_en": null
+  },
+  {
+   "id": "L002",
+   "scene": "s00_open",
+   "spk": "narrator",
+   "start": 5.519,
+   "end": 9.201,
+   "sub": "此刻，我正同时注视着12,000个目标。",
+   "sub_en": null
+  },
+  {
+   "id": "L003",
+   "scene": "s01_chapter",
+   "spk": "narrator",
+   "start": 13.6,
+   "end": 16.223,
+   "sub": "这是第一章的第一句旁白。",
+   "sub_en": null
+  }
+ ]
+}

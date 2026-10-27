@@ -1,0 +1,8 @@
+.cache/
+build/audio/
+build/tts/*.wav
+output/
+render/node_modules/
+assets/fonts/
+assets/soundfont/
+__pycache__/
