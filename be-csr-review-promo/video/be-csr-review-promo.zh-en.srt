@@ -1,0 +1,104 @@
+1
+00:00:00,800 --> 00:00:04,200
+这是一份BE临床总结报告
+This is a bioequivalence Clinical Study Report
+
+2
+00:00:04,300 --> 00:00:07,400
+正文、表格、嵌套表、脚注、图——一样都不能漏读
+Body text, tables, nested tables, footnotes, figures — none may be skipped
+
+3
+00:00:07,800 --> 00:00:11,400
+密密麻麻的数字、单位、脚注与显示精度
+Dense grids of numbers, units, footnotes and display precisions
+
+4
+00:00:11,600 --> 00:00:15,600
+漏掉一处矛盾，就是又一轮返工
+Miss one contradiction, and it is another round of rework
+
+5
+00:00:21,200 --> 00:00:25,000
+把报告审清楚，把意见交明白
+Review the report thoroughly. Deliver comments clearly.
+
+6
+00:00:25,200 --> 00:00:27,800
+为空腹 / 餐后 BE 报告打造的审核 Skill
+A review Skill built for fasting / fed BE reports
+
+7
+00:00:28,400 --> 00:00:31,600
+一条主线，六道关口
+One main line. Six gates.
+
+8
+00:00:31,800 --> 00:00:37,800
+明确任务 → 固定文件 → 顺读全文 → 核来源与主张
+Scope the task → pin the files → read in order → verify sources & claims
+
+9
+00:00:38,000 --> 00:00:43,800
+反查意见与漏项 → 交付。关口是工作证据，不是六次签字
+Re-check comments & gaps → deliver. Gates are work evidence, not six sign-offs.
+
+10
+00:00:44,500 --> 00:00:49,600
+直接复制的表：题、表头、标签、单位、脚注、精度，逐格核对
+Copied tables: title, header, labels, units, footnotes, precision — checked cell by cell
+
+11
+00:00:49,800 --> 00:00:53,800
+原值保留，矛盾当场定位到行、列和位置
+Original values kept; contradictions pinned to row, column and location
+
+12
+00:00:54,000 --> 00:00:57,800
+数值相同≠专业结论：还要核用途、人群、方法和反证
+Same number ≠ professional verdict: purpose, population, method, counter-evidence
+
+13
+00:00:58,400 --> 00:01:02,400
+人做判断，模型做专业阅读，工具做确定性计算
+People decide. The model reads like an expert. Tools compute deterministically.
+
+14
+00:01:02,600 --> 00:01:07,800
+三方分工，共享同一份任务、证据和结果
+Three roles, one shared task, evidence trail and result
+
+15
+00:01:08,400 --> 00:01:12,000
+交付作者能定位、能处理的意见
+Comments the author can locate and act on
+
+16
+00:01:12,200 --> 00:01:15,900
+七列意见表：编号·位置·原文·意见·依据·处理性质·当前状态
+Seven-column table: ID · location · original · comment · basis · nature · state
+
+17
+00:01:16,100 --> 00:01:19,800
+原件默认不改，批注进副本；中断了，也能从断点接续
+Originals untouched, comments go to a copy; interrupted work resumes at the breakpoint
+
+18
+00:01:20,400 --> 00:01:24,000
+一个包，带走方法、固定运行代码和依赖
+One package: method, pinned runtime code and dependencies
+
+19
+00:01:24,200 --> 00:01:27,800
+离线安装，哈希校验，无需完整仓库或API密钥
+Offline install, hash-verified, no full repo or API key needed
+
+20
+00:01:28,600 --> 00:01:31,600
+读完整 · 核来源 · 核全表 · 发现矛盾
+Read it all · verify sources · verify every table · find contradictions
+
+21
+00:01:31,800 --> 00:01:35,600
+辅助审核，不替代专业判断与监管结论
+It assists review — it does not replace professional or regulatory judgement
